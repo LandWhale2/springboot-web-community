@@ -64,8 +64,6 @@ body {
     float: left;
     width: auto;
     margin-top: 100px;
-
-
 }
 
 .input1 {
@@ -81,18 +79,6 @@ body {
     border-radius: 15px;
 }
 
-.input2 {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f2f2f2;
-    width: 300px;
-    border: 0;
-    height: auto;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    padding: 15px;
-    font-size: 14px;
-    border-radius: 15px;
-}
 
 .button {
     width: 350px;
@@ -130,18 +116,33 @@ body {
     cursor: pointer;
 }
 
+.button-normal {
+    color: white;
+    box-shadow: 1px 1px 1px gray;
+    background: #0e51ff;
+
+    height: 30px;
+
+    text-decoration: none;
+    font-size: 20px;
+    margin: 0 2px;
+    border-radius: 15px;
+    padding: 15px 40px;
+    cursor: pointer;
+}
+
 .social-form {
     width: 350px;
     height: 50px;
     border-radius: 15px;
-    padding: 10px 0;
+    padding: 5px 0;
     margin: 10px 0;
     font-size: 20px;
     display: inline-block;
     background: white;
     border: thin solid #888;
     box-shadow: 1px 1px 1px gray;
-    vertical-align: middle;
+    vertical-align: center;
     text-align: center;
 }
 
