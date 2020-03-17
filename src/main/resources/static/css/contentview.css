@@ -69,7 +69,10 @@ body {
 .content-data span {
     margin: 0 20px;
 }
-.content-zone {margin: 20px 20px}
+
+.content-zone {
+    margin: 20px 20px
+}
 
 
 .container-social {
@@ -87,13 +90,14 @@ body {
 
 
 .container-social .icon-con a {
-    margin: 20px 120px;
+    margin: 70px 120px;
     color: black;
-    font-size: 80px;
+    font-size: 90px;
     text-decoration: none;
 }
 
 table {
+    margin-top: 50px;
     border-collapse: separate;
     border-spacing: 1px;
     text-align: left;
