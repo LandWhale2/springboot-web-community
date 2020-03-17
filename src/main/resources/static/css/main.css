@@ -157,13 +157,12 @@ header {
 }
 
 body {
-    margin: 0px 140px;
     font-family: Arial, Helvetica, sans-serif;
     color: black;
 }
 
 .container {
-    margin: 0px 70px;
+    margin: auto;
     display: grid;
     grid-template-columns: auto auto;
 
@@ -171,7 +170,7 @@ body {
 }
 
 .container .Recom-board, .container .Free_board, .container .Tip-board {
-    margin: 20px 10px;
+    margin: auto;
     padding: 0px 20px;
     width: 600px;
     height: 400px;
