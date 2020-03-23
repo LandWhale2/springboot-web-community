@@ -51,7 +51,7 @@ body {
 }
 
 .container {
-    margin: 100px 500px 20px 300px;
+    margin: auto;
     width: 60%;
     height: auto;
     padding: 40px;
