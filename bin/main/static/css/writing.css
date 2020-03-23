@@ -56,9 +56,18 @@ body {
 .btnzone .cancelbtn, .btnzone .enrollbtn {
     float: right;
 }
+
 .btnzone button:hover {
     opacity: 1;
 }
+
 .btnzone .cancelbtn {
     background-color: gray;
+}
+
+.btnzone .photobtn {
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+    border-radius: 30pt;
 }
