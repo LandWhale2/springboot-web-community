@@ -4,14 +4,13 @@ header {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
-<--  맨 위 부분  -->
+
 .top-bar {
   overflow: hidden;
   background-color: white;
   padding-top: 15px;
   vertical-align: center;
   text-align: center;
-  alignment: center;
   margin: 0px 10px;
 }
 
@@ -103,7 +102,7 @@ header {
   border: #0e51ff thin solid;
   border-radius: 15px;
 }
-<-- 맨 위부분 끝 및 탭 시작-->
+
 .tab {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
@@ -146,7 +145,11 @@ header {
 .tab .conBox.on {
   display: block;
 }
-<-- 탭 부분 종료 및 몸체 파트 -->
+.tab a {
+  text-decoration: none;
+  color: black;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   color: black;
@@ -177,7 +180,7 @@ body {
   vertical-align: center;
   padding: 0px 10px;
 }
-<-- 컨테이너 파트 종료 및 컨테이너 디테일 -->
+
 .container .phrase {
   border-bottom: thin solid lavender;
   padding: 10px 0px;
