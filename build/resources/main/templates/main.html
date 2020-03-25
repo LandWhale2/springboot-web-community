@@ -25,13 +25,8 @@
             <a href="signUp.html" class="SignUp">
                 SignUp
             </a></div>
-
-
     </div>
-
-
 </header>
-
 <body>
 <div class="tab">
     <ul>
@@ -51,35 +46,7 @@
             <li data-id="con5">고민</li>
         </a>
     </ul>
-    <div id="con1" class="conBox on">
-        <div class="container">
-            <div class="Recom-board">
-                <table class="table-1">
-                    <tr>
-                        <th>글 번호</th>
-                        <th>글쓴이</th>
-                        <th>글 제목</th>
-                    </tr>
-                    <tr th:each="i: ${#numbers.sequence(1, 10)}">
-                        <td th:text="${i}"></td>
-                        <td th:text="글쓴이 + ${i}"></td>
-                        <td th:text="제목 + ${i}"></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="Free_board">
-                <h1>자유 게시판</h1>
-                <span class="phrase"><a href="#detail" class="detail-title">일반글</a>
-                        <a href="#detail" class="detail-rec">추천 300</a>
-                        <a href="#detail" class="detail-views">조회 1000</a></span>
-            </div>
-            <div class="Tip-board">
-                <h1>팁</h1><span class="phrase"><a href="#detail" class="detail-title">일반글</a>
-                        <a href="#detail" class="detail-rec">추천 300</a>
-                        <a href="#detail" class="detail-views">조회 1000</a></span>
-            </div>
-        </div>
-
+    <div th:insert="con1.html" id="con1" class="conBox on">
 
     </div>
     <div id="con2" class="conBox">
@@ -97,111 +64,25 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>공지</td>
-                <td>공지글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
+            <tr th:each="i: ${#numbers.sequence(1, 10)}">
+                <td th:text="${i}" scope="cols"></td>
                 <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
+                <td th:text="글제목+ ${i}"></td>
+                <td th:text="글쓴이+ ${i}"></td>
+                <td th:text="1월 + ${i}"></td>
+                <td th:text="${i}"></td>
+                <td th:text="${i}"></td>
             </tr>
             </tbody>
         </table>
         <div class="page-control">
-            <div class="list-num"><a href="#prePage" class="pageindex">이전</a><a href="#num1">1</a><a
-                    href="#num2">2</a><a href="#num3">3</a><a href="#num4">4</a><a href="#num5">5</a><a
-                    href="#num6">6</a><a href="#num7">7</a><a href="#num8">8</a><a href="#num9">9</a><a
-                    href="#num10">10</a><a href="#nextPage" class="pageindex">다음</a><a href="#endPage"
+            <div class="list-num"><a th:each="i: ${#numbers.sequence(1, 10)}"><a th:text="${i}"></a></a><a href="#nextPage" class="pageindex">다음</a><a href="#endPage"
                                                                                        class="pageindex">끝</a>
                 <a href="#writing" class="writing">
                     글쓰기
                 </a>
             </div>
-
         </div>
-
     </div>
     <div id="con3" class="conBox">
         <h1 class="title">팁</h1>
@@ -218,111 +99,25 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>공지</td>
-                <td>공지글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
+            <tr th:each="i: ${#numbers.sequence(1, 10)}">
+                <td th:text="${i}" scope="cols"></td>
                 <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
+                <td th:text="글제목+ ${i}"></td>
+                <td th:text="글쓴이+ ${i}"></td>
+                <td th:text="1월 + ${i}"></td>
+                <td th:text="${i}"></td>
+                <td th:text="${i}"></td>
             </tr>
             </tbody>
         </table>
         <div class="page-control">
-            <div class="list-num"><a href="#prePage" class="pageindex">이전</a><a href="#num1">1</a><a
-                    href="#num2">2</a><a href="#num3">3</a><a href="#num4">4</a><a href="#num5">5</a><a
-                    href="#num6">6</a><a href="#num7">7</a><a href="#num8">8</a><a href="#num9">9</a><a
-                    href="#num10">10</a><a href="#nextPage" class="pageindex">다음</a><a href="#endPage"
-                                                                                       class="pageindex">끝</a>
+            <div class="list-num"><a th:each="i: ${#numbers.sequence(1, 10)}"><a th:text="${i}"></a></a><a href="#nextPage" class="pageindex">다음</a><a href="#endPage"
+                                                                                                                                                       class="pageindex">끝</a>
                 <a href="#writing" class="writing">
                     글쓰기
                 </a>
             </div>
-
         </div>
-
     </div>
     <div id="con4" class="conBox">
         <h1 class="title">추천</h1>
@@ -339,111 +134,25 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>공지</td>
-                <td>공지글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
+            <tr th:each="i: ${#numbers.sequence(1, 10)}">
+                <td th:text="${i}" scope="cols"></td>
                 <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
+                <td th:text="글제목+ ${i}"></td>
+                <td th:text="글쓴이+ ${i}"></td>
+                <td th:text="1월 + ${i}"></td>
+                <td th:text="${i}"></td>
+                <td th:text="${i}"></td>
             </tr>
             </tbody>
         </table>
         <div class="page-control">
-            <div class="list-num"><a href="#prePage" class="pageindex">이전</a><a href="#num1">1</a><a
-                    href="#num2">2</a><a href="#num3">3</a><a href="#num4">4</a><a href="#num5">5</a><a
-                    href="#num6">6</a><a href="#num7">7</a><a href="#num8">8</a><a href="#num9">9</a><a
-                    href="#num10">10</a><a href="#nextPage" class="pageindex">다음</a><a href="#endPage"
-                                                                                       class="pageindex">끝</a>
+            <div class="list-num"><a th:each="i: ${#numbers.sequence(1, 10)}"><a th:text="${i}"></a></a><a href="#nextPage" class="pageindex">다음</a><a href="#endPage"
+                                                                                                                                                       class="pageindex">끝</a>
                 <a href="#writing" class="writing">
                     글쓰기
                 </a>
             </div>
-
         </div>
-
     </div>
     <div id="con5" class="conBox">
         <h1 class="title">고민</h1>
@@ -460,111 +169,25 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>공지</td>
-                <td>공지글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
+            <tr th:each="i: ${#numbers.sequence(1, 10)}">
+                <td th:text="${i}" scope="cols"></td>
                 <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>일반</td>
-                <td>일반글</td>
-                <td>호우</td>
-                <td>2020.03.10</td>
-                <td>0</td>
-                <td>0</td>
+                <td th:text="글제목+ ${i}"></td>
+                <td th:text="글쓴이+ ${i}"></td>
+                <td th:text="1월 + ${i}"></td>
+                <td th:text="${i}"></td>
+                <td th:text="${i}"></td>
             </tr>
             </tbody>
         </table>
         <div class="page-control">
-            <div class="list-num"><a href="#prePage" class="pageindex">이전</a><a href="#num1">1</a><a
-                    href="#num2">2</a><a href="#num3">3</a><a href="#num4">4</a><a href="#num5">5</a><a
-                    href="#num6">6</a><a href="#num7">7</a><a href="#num8">8</a><a href="#num9">9</a><a
-                    href="#num10">10</a><a href="#nextPage" class="pageindex">다음</a><a href="#endPage"
-                                                                                       class="pageindex">끝</a>
+            <div class="list-num"><a th:each="i: ${#numbers.sequence(1, 10)}"><a th:text="${i}"></a></a><a href="#nextPage" class="pageindex">다음</a><a href="#endPage"
+                                                                                                                                                       class="pageindex">끝</a>
                 <a href="#writing" class="writing">
                     글쓰기
                 </a>
             </div>
-
         </div>
-
     </div>
 </div>
 <script>
