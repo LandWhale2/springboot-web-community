@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" http-equiv="Content-Type" content="text/html">
     <title>Insert title here</title>
-    <link rel="stylesheet" href="../../static/css/main.css" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/main.css}" type="text/css">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
@@ -55,7 +55,7 @@
             <div class="container">
                 <div class="Recom-board">
                     <h1>추천 게시판</h1>
-                    <span class="phrase"><a href="#detail" class="detail-title">공지글</a>
+                    <span class="phrase"><a href="#detail" class="detail-title">일반글</a>
                         <a href="#detail" class="detail-rec">추천 300</a>
                         <a href="#detail" class="detail-views">조회 1000</a></span>
                 </div>
