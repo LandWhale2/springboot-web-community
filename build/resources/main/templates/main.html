@@ -19,10 +19,10 @@
                 <input type="text" placeholder="Search" name="search"></form>
         </div>
         <div class="top-bar-right"><a href="#Alarm" class="Alarm"><i class="far fa-bell"></i></a>
-            <a href="signIn.html" class="SignIn">
+            <a th:href="@{/signin}" class="SignIn">
                 SignIn
             </a>
-            <a href="signUp.html" class="SignUp">
+            <a th:href="@{/signup}" class="SignUp">
                 SignUp
             </a></div>
     </div>
@@ -49,24 +49,34 @@
     <div id="con1" class="conBox on">
         <div class="container">
             <div class="Recom-board">
+                <h1>추천 게시판</h1>
                 <table class="table-1">
-                    <tr th:each="i: ${#numbers.sequence(1, 10)}">
-                        <td th:text="일반글 + ${i}"></td>
-                        <td th:text="추천 + ${i}"></td>
-                        <td th:text="조회 + ${i}"></td>
+                    <tr th:each="i: ${#numbers.sequence(1, 7)}">
+                        <td th:text="일반글 + ${i}" class="table-1-title"></td>
+                        <td th:text="추천 + ${i}" class="table-1-rec"></td>
+                        <td th:text="조회 + ${i}" class="table-1-views"></td>
                     </tr>
                 </table>
             </div>
             <div class="Free_board">
                 <h1>자유 게시판</h1>
-                <span class="phrase"><a href="#detail" class="detail-title">일반글</a>
-                        <a href="#detail" class="detail-rec">추천 300</a>
-                        <a href="#detail" class="detail-views">조회 1000</a></span>
+                <table class="table-1">
+                    <tr th:each="i: ${#numbers.sequence(1, 7)}">
+                        <td th:text="일반글 + ${i}" class="table-1-title"></td>
+                        <td th:text="추천 + ${i}" class="table-1-rec"></td>
+                        <td th:text="조회 + ${i}" class="table-1-views"></td>
+                    </tr>
+                </table>
             </div>
             <div class="Tip-board">
-                <h1>팁</h1><span class="phrase"><a href="#detail" class="detail-title">일반글</a>
-                        <a href="#detail" class="detail-rec">추천 300</a>
-                        <a href="#detail" class="detail-views">조회 1000</a></span>
+                <h1>팁</h1>
+                <table class="table-1">
+                    <tr th:each="i: ${#numbers.sequence(1, 7)}">
+                        <td th:text="일반글 + ${i}" class="table-1-title"></td>
+                        <td th:text="추천 + ${i}" class="table-1-rec"></td>
+                        <td th:text="조회 + ${i}" class="table-1-views"></td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
@@ -90,7 +100,7 @@
                 <td>일반</td>
                 <td th:text="글제목+ ${i}"></td>
                 <td th:text="글쓴이+ ${i}"></td>
-                <td th:text="1월 + ${i}"></td>
+                <td th:text="1월 + ${i} + 일"></td>
                 <td th:text="${i}"></td>
                 <td th:text="${i}"></td>
             </tr>

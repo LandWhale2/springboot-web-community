@@ -4,7 +4,6 @@ package com.common.forum.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.List;
 
 @Controller
 public class BoardController {
@@ -12,4 +11,14 @@ public class BoardController {
     public String test() {
         return "main.html";
     }
+
+    @GetMapping("/signin")
+    public String signin() {
+        return "signIn.html";
+    }
+    @GetMapping("/signup")
+    public String signup() {
+        return "signUp.html";
+    }
 }
+

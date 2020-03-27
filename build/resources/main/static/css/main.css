@@ -5,9 +5,7 @@ header {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.table-1 tr td {
-  color: black;
-}
+
 .top-bar {
   overflow: hidden;
   background-color: white;
@@ -15,7 +13,7 @@ header {
   vertical-align: center;
   text-align: center;
 
-  margin: 0 15px;
+  margin: 0px 15px;
 }
 
 .top-bar a {
@@ -114,9 +112,8 @@ header {
 }
 
 .tab ul {
-  padding: 8px 20px;
+  padding: 0 5px;
   margin: 0;
-
   list-style: none;
   width: 100%;
   height: auto;
@@ -126,7 +123,9 @@ header {
 .tab ul li {
   display: inline-block;
 
-  padding: 15px 120px;
+  width: 18%;
+  height: 25px;
+  padding: 25px 0 5px 0;
   text-align: center;
   cursor: pointer;
 
@@ -150,16 +149,20 @@ header {
 .tab .conBox.on {
   display: block;
 }
+
 .tab a {
   text-decoration: none;
   color: black;
 }
 
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   color: black;
 }
-
+.table-1 tr td {
+  color: black;
+}
 .container {
   margin: auto;
   display: grid;
@@ -169,7 +172,7 @@ body {
 .container .Recom-board,
 .container .Free_board,
 .container .Tip-board {
-  margin: auto;
+  margin: 20px 100px ;
   padding: 0px 20px;
   width: 600px;
   height: 400px;
@@ -236,6 +239,18 @@ table.board tbody th {
   font-weight: bold;
   vertical-align: top;
   border-bottom: 1px solid gray;
+}
+table.table-1 td {
+  padding: 10px;
+  vertical-align: top;
+  border-bottom: 1px solid gray;
+}
+.table-1-rec, .table-1-views
+{
+  width: 10%;
+}
+.table-1-title {
+  width: 80%;
 }
 
 table.board td {
