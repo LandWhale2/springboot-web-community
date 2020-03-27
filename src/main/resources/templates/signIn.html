@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/css/signIn.css}" type="text/css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <header>
@@ -17,41 +17,28 @@
 <div class="container">
     <form action="/">
         <div class="row">
-            <h1 class="signIn-caption">로그인</h1>
-            <div class="vl"><span class="vl-innertext">or</span></div>
-            <div class="col">
-                <div class="hide-md-lg">
-                    <p>Or sign in manually:</p>
-                </div>
-                <input type="text" name="username" placeholder="Username" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <input type="submit" value="Login">
+            <div class="login">
+                <input type="text" name="username" placeholder="ID" required>
+                <input type="password" name="password" placeholder="비밀번호" required>
+                <input type="submit" value="로그인">
             </div>
-            <div class="col">
-                <a href="#" class="fb btn">
-                    <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-                </a>
-                <a href="#" class="twitter btn">
-                    <i class="fa fa-twitter fa-fw"></i> Login with Twitter
-                </a>
-                <a href="#" class="google btn">
-                    <i class="fa fa-google fa-fw"></i> Login with Google+
-                </a>
+            <div class="vl"><span class="vl-innertext">or</span></div>
+            <div class="social">
+                <div class="social-btn"><a href="#" class="naver btn">
+                    <img th:src="@{/assets/naver_logo.png}"> <span>네이버로 로그인 하기</span>
+                </a></div>
+                <div class="social-btn"><a href="#" class="google btn">
+                    <img th:src="@{/assets/google_logo.png}"><span>구글로 로그인하기</span>
+                </a></div>
             </div>
         </div>
     </form>
     <div class="bottom-container">
-        <div class="row">
-            <div class="col">
-                <a href="#" style="color: white" class="btn">Sign up</a>
-            </div>
-            <div class="col">
-                <a href="#" style="color: white" class="btn">Forgot password?</a>
-            </div>
-        </div>
+        <div class="bottom-container-btn"><a href="#" style="color: white" class="btn">회원가입</a></div>
+        <div class="bottom-container-btn"><a href="#" style="color: white" class="btn">비밀번호 찾기</a></div>
+
     </div>
 </div>
-
 
 
 </body>
