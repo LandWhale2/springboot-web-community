@@ -16,9 +16,18 @@ public class BoardController {
     public String signin() {
         return "signIn.html";
     }
+
     @GetMapping("/signup")
     public String signup() {
         return "signUp.html";
+    }
+    @GetMapping("/writing")
+    public String writing() {
+        return "writing.html";
+    }
+    @GetMapping("/contentview")
+    public String contentview() {
+        return "contentview.html";
     }
 }
 
