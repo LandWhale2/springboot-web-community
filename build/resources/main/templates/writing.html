@@ -2,13 +2,12 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
     <link rel="stylesheet" th:href="@{/css/writing.css}">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-<form action="main.html" class="container">
+<form action="/post" class="container" method="post">
     <div class="form"><input type="text" placeholder="제목을 입력해주세요" name="title" required class="title-zone"><br>
         <textarea placeholder="내용을 입력해주세요" name="content" required class="content-zone"></textarea>
         <div class="btnzone">

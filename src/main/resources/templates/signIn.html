@@ -15,12 +15,12 @@
 </header>
 <body>
 <div class="container">
-    <form action="/">
+    <form action="/user/login" method="post">
         <div class="row">
             <div class="login">
-                <input type="text" name="username" placeholder="ID" required>
-                <input type="password" name="password" placeholder="비밀번호" required>
-                <input type="submit" value="로그인">
+                <input type="text" th:name="username" placeholder="ID" required>
+                <input type="password" th:name="password" placeholder="비밀번호" required>
+                <input type="submit" th:value="로그인">
             </div>
             <div class="vl"><span class="vl-innertext">or</span></div>
             <div class="social">
@@ -34,7 +34,7 @@
         </div>
     </form>
     <div class="bottom-container">
-        <div class="bottom-container-btn"><a href="#" style="color: white" class="btn">회원가입</a></div>
+        <div class="bottom-container-btn"><a th:href="@{/signup}" style="color: white" class="btn">회원가입</a></div>
         <div class="bottom-container-btn"><a href="#" style="color: white" class="btn">비밀번호 찾기</a></div>
 
     </div>

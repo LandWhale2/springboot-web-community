@@ -162,11 +162,11 @@ body {
     grid-template-columns: auto auto;
 }
 
-.container .Recom-board, .container .Free_board, .container .Tip-board {
+.container div{
     margin: 19px 60px;
     padding: 0 20px;
     width: 700px;
-    height: 400px;
+    height: 500px;
     border: thin solid black;
     box-shadow: 10px 10px 10px gray;
 }
@@ -200,6 +200,7 @@ table.table-1 td {
 }
 
 .board th {
+    width: 30px;
     padding: 10px;
     vertical-align: top;
     text-align: center;
@@ -207,32 +208,8 @@ table.table-1 td {
     border-bottom: 1px solid black;
 }
 
-.con-board-num {
-    width: 5%;
-}
-
-.con-board-head {
-    width: 7%;
-}
-
-.con-board-title {
-    width: 62%;
-}
-
-.con-board-writer {
-    width: 7%;
-}
-
-.con-board-date {
-    width: 7%;
-}
-
-.con-board-views {
-    width: 6%;
-}
-
-.con-board-recom {
-    width: 6%;
+.board .blue {
+    width: 10px;
 }
 
 .board tbody tr {
@@ -260,7 +237,7 @@ table.table-1 td {
 }
 
 .conBox .page-control .list-num {
-    margin: auto;
+    margin-left: 200px;
     color: black;
 }
 
@@ -276,11 +253,13 @@ table.table-1 td {
     font-size: 20px;
     border: #0e51ff thin solid;
     border-radius: 15px;
+    margin-top: 0px;
 }
 
 .conBox .page-control .list-num a {
+    margin-left: 10px;
     color: black;
-  padding: 0 5px;
+    padding: 0px 10px;
     text-decoration: none;
 }
 
