@@ -11,17 +11,6 @@ header {
   padding-top: 15px;
   vertical-align: center;
   text-align: center;
-<<<<<<< HEAD
-<<<<<<< HEAD
-  margin: 0px 15px;
-=======
-  alignment: center;
-  margin: 0px 10px;
->>>>>>> Design
-=======
-  alignment: center;
-  margin: 0px 10px;
->>>>>>> Design
 }
 
 .top-bar a {
@@ -112,42 +101,9 @@ header {
   border: #0e51ff thin solid;
   border-radius: 15px;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-.tab {
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  vertical-align: center;
-}
-
-.tab ul {
-  padding: 8px 20px;
-  margin: 0;
-=======
-<-- 맨 위부분 끝 및 탭 시작-->
-.tab {
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  vertical-align: middle;
-}
 
 .tab ul {
   padding: 8px 0;
-
->>>>>>> Design
-=======
-<-- 맨 위부분 끝 및 탭 시작-->
-.tab {
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  vertical-align: middle;
-}
-
-.tab ul {
-  padding: 8px 0;
-
->>>>>>> Design
   list-style: none;
   width: 100%;
   height: auto;
@@ -156,23 +112,6 @@ header {
 
 .tab ul li {
   display: inline-block;
-<<<<<<< HEAD
-<<<<<<< HEAD
-  padding: 15px 120px;
-  text-align: center;
-  cursor: pointer;
-=======
-=======
->>>>>>> Design
-  padding: 15px 145px;
-  text-align: center;
-  cursor: pointer;
-  font-size: 20px;
-  font-weight: bold;
-<<<<<<< HEAD
->>>>>>> Design
-=======
->>>>>>> Design
   border-bottom: thin solid gray;
 }
 
@@ -208,23 +147,6 @@ body {
 .container .Recom-board,
 .container .Free_board,
 .container .Tip-board {
-<<<<<<< HEAD
-<<<<<<< HEAD
-  margin: auto;
-  padding: 0px 20px;
-  width: 600px;
-  height: 400px;
-=======
-=======
->>>>>>> Design
-  margin: 30px auto;
-  padding: 0px 20px;
-  width: 700px;
-  height: 500px;
-<<<<<<< HEAD
->>>>>>> Design
-=======
->>>>>>> Design
   border: thin solid black;
   box-shadow: 10px 10px 10px gray;
 }
@@ -237,15 +159,6 @@ body {
   vertical-align: center;
   padding: 0px 10px;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
-<-- 컨테이너 파트 종료 및 컨테이너 디테일 -->
->>>>>>> Design
-=======
-<-- 컨테이너 파트 종료 및 컨테이너 디테일 -->
->>>>>>> Design
 .container .phrase {
   border-bottom: thin solid lavender;
   padding: 10px 0px;

@@ -12,6 +12,6 @@ public class BoardController {
 
 	@GetMapping("/")
     public String list() {
-		return "ddddd";
+		return "index/main";
 	}
 }
