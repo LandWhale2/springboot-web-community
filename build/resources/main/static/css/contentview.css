@@ -139,7 +139,7 @@ table td {
     resize: none;
 }
 
-.enrollbtn {
+.btn {
     color: white;
     float: right;
     box-shadow: 1px 1px 1px gray;
@@ -149,7 +149,11 @@ table td {
     font-size: 20px;
     margin: 10px 10px;
     border-radius: 15px;
-    padding: 15px 40px;
+    padding: 10px 40px;
     cursor: pointer;
     overflow: auto;
+}
+
+.control .btn {
+    margin: 30px 10px 20px 10px;
 }

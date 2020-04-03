@@ -3,12 +3,9 @@
 
 <head>
     <meta charset="UTF-8" http-equiv="Content-Type" content="text/html">
-    <title>Insert title here</title>
-    <link rel="stylesheet" th:href="@{/css/main.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-
-
 </head>
 <header>
     <div class="top-bar">
@@ -19,10 +16,10 @@
                 <input type="text" placeholder="Search" name="search"></form>
         </div>
         <div class="top-bar-right"><a href="#Alarm" class="Alarm"><i class="far fa-bell"></i></a>
-            <a href="signIn.html" class="SignIn">
+            <a th:href="@{/signin}" class="SignIn">
                 SignIn
             </a>
-            <a href="signUp.html" class="SignUp">
+            <a th:href="@{/signup}" class="SignUp">
                 SignUp
             </a></div>
     </div>
@@ -48,25 +45,45 @@
     </ul>
     <div id="con1" class="conBox on">
         <div class="container">
-            <div class="Recom-board">
+            <div>
+                <h1>추천 게시판</h1>
                 <table class="table-1">
-                    <tr th:each="i: ${#numbers.sequence(1, 10)}">
-                        <td th:text="일반글 + ${i}"></td>
-                        <td th:text="추천 + ${i}"></td>
-                        <td th:text="조회 + ${i}"></td>
+                    <tr th:each="board : ${boardList}">
+                        <td th:text="${board.title}" class="table-1-title"></td>
+                        <td th:text="${board.recom}" class="table-1-rec"></td>
+                        <td th:text="${board.views}" class="table-1-views"></td>
                     </tr>
                 </table>
             </div>
-            <div class="Free_board">
+            <div>
                 <h1>자유 게시판</h1>
-                <span class="phrase"><a href="#detail" class="detail-title">일반글</a>
-                        <a href="#detail" class="detail-rec">추천 300</a>
-                        <a href="#detail" class="detail-views">조회 1000</a></span>
+                <table class="table-1">
+                    <tr th:each="board : ${boardList}">
+                        <td th:text="${board.title}" class="table-1-title"></td>
+                        <td th:text="${board.recom}" class="table-1-rec"></td>
+                        <td th:text="${board.views}" class="table-1-views"></td>
+                    </tr>
+                </table>
             </div>
-            <div class="Tip-board">
-                <h1>팁</h1><span class="phrase"><a href="#detail" class="detail-title">일반글</a>
-                        <a href="#detail" class="detail-rec">추천 300</a>
-                        <a href="#detail" class="detail-views">조회 1000</a></span>
+            <div>
+                <h1>팁</h1>
+                <table class="table-1">
+                    <tr th:each="board : ${boardList}">
+                        <td th:text="${board.title}" class="table-1-title"></td>
+                        <td th:text="${board.recom}" class="table-1-rec"></td>
+                        <td th:text="${board.views}" class="table-1-views"></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <h1>고민 게시판</h1>
+                <table class="table-1">
+                    <tr th:each="board : ${boardList}">
+                        <td th:text="${board.title}" class="table-1-title"></td>
+                        <td th:text="${board.recom}" class="table-1-rec"></td>
+                        <td th:text="${board.views}" class="table-1-views"></td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
@@ -75,32 +92,33 @@
         <table class="board">
             <thead>
             <tr>
-                <th scope="cols">번호</th>
-                <th scope="cols">말머리</th>
-                <th scope="cols">제목</th>
-                <th scope="cols">글쓴이</th>
-                <th scope="cols">작성일</th>
-                <th scope="cols">조회</th>
-                <th scope="cols">추천</th>
+                <th scope="cols" class="con-board-num">번호</th>
+                <th scope="cols" class="con-board-head">말머리</th>
+                <th scope="cols" class="con-board-title">제목</th>
+                <th scope="cols" class="con-board-writer">글쓴이</th>
+                <th scope="cols" class="con-board-date">작성일</th>
+                <th scope="cols" class="con-board-views">조회</th>
+                <th scope="cols" class="con-board-recom">추천</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="i: ${#numbers.sequence(1, 10)}">
-                <td th:text="${i}" scope="cols"></td>
-                <td>일반</td>
-                <td th:text="글제목+ ${i}"></td>
-                <td th:text="글쓴이+ ${i}"></td>
-                <td th:text="1월 + ${i}"></td>
-                <td th:text="${i}"></td>
-                <td th:text="${i}"></td>
+            <tr th:each="board : ${boardList}">
+                <td th:text="${board.number}"></td>
+                <td th:text="${board.head}"></td>
+                <td><a th:href="@{'/post' + ${board.id}}"><span th:text="${board.title}"></span></a></td>
+                <td th:text="${board.writer}"></td>
+                <td th:text="${board.date}"></td>
+                <td th:text="${board.views}"></td>
+                <td th:text="${board.recom}"></td>
             </tr>
             </tbody>
         </table>
         <div class="page-control">
-            <div class="list-num"><a th:each="i: ${#numbers.sequence(1, 10)}"><a th:text="${i}"></a></a><a
+            <div class="list-num"><a href="#previousPage" class="pageindex">이전</a><a
+                    th:each="i: ${#numbers.sequence(1, 10)}"><a th:text="${i}"></a></a><a
                     href="#nextPage" class="pageindex">다음</a><a href="#endPage"
                                                                 class="pageindex">끝</a>
-                <a href="#writing" class="writing">
+                <a th:href="@{/writing}" class="writing">
                     글쓰기
                 </a>
             </div>
@@ -111,32 +129,33 @@
         <table class="board">
             <thead>
             <tr>
-                <th scope="cols">번호</th>
-                <th scope="cols">말머리</th>
-                <th scope="cols">제목</th>
-                <th scope="cols">글쓴이</th>
-                <th scope="cols">작성일</th>
-                <th scope="cols">조회</th>
-                <th scope="cols">추천</th>
+                <th scope="cols" class="con-board-num">번호</th>
+                <th scope="cols" class="con-board-head">말머리</th>
+                <th scope="cols" class="con-board-title">제목</th>
+                <th scope="cols" class="con-board-writer">글쓴이</th>
+                <th scope="cols" class="con-board-date">작성일</th>
+                <th scope="cols" class="con-board-views">조회</th>
+                <th scope="cols" class="con-board-recom">추천</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="i: ${#numbers.sequence(1, 10)}">
-                <td th:text="${i}" scope="cols"></td>
-                <td>일반</td>
-                <td th:text="글제목+ ${i}"></td>
-                <td th:text="글쓴이+ ${i}"></td>
-                <td th:text="1월 + ${i}"></td>
-                <td th:text="${i}"></td>
-                <td th:text="${i}"></td>
+            <tr th:each="board : ${boardList}">
+                <td th:text="${board.number}"></td>
+                <td th:text="${board.head}"></td>
+                <td><a th:href="@{'/post' + ${board.id}}"><span th:text="${board.title}"></span></a></td>
+                <td th:text="${board.writer}"></td>
+                <td th:text="${board.date}"></td>
+                <td th:text="${board.views}"></td>
+                <td th:text="${board.recom}"></td>
             </tr>
             </tbody>
         </table>
         <div class="page-control">
-            <div class="list-num"><a th:each="i: ${#numbers.sequence(1, 10)}"><a th:text="${i}"></a></a><a
+            <div class="list-num"><a href="#previousPage" class="pageindex">이전</a><a
+                    th:each="i: ${#numbers.sequence(1, 10)}"><a th:text="${i}"></a></a><a
                     href="#nextPage" class="pageindex">다음</a><a href="#endPage"
                                                                 class="pageindex">끝</a>
-                <a href="#writing" class="writing">
+                <a th:href="@{/writing}" class="writing">
                     글쓰기
                 </a>
             </div>
@@ -147,32 +166,33 @@
         <table class="board">
             <thead>
             <tr>
-                <th scope="cols">번호</th>
-                <th scope="cols">말머리</th>
-                <th scope="cols">제목</th>
-                <th scope="cols">글쓴이</th>
-                <th scope="cols">작성일</th>
-                <th scope="cols">조회</th>
-                <th scope="cols">추천</th>
+                <th scope="cols" class="con-board-num">번호</th>
+                <th scope="cols" class="con-board-head">말머리</th>
+                <th scope="cols" class="con-board-title">제목</th>
+                <th scope="cols" class="con-board-writer">글쓴이</th>
+                <th scope="cols" class="con-board-date">작성일</th>
+                <th scope="cols" class="con-board-views">조회</th>
+                <th scope="cols" class="con-board-recom">추천</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="i: ${#numbers.sequence(1, 10)}">
-                <td th:text="${i}" scope="cols"></td>
-                <td>일반</td>
-                <td th:text="글제목+ ${i}"></td>
-                <td th:text="글쓴이+ ${i}"></td>
-                <td th:text="1월 + ${i}"></td>
-                <td th:text="${i}"></td>
-                <td th:text="${i}"></td>
+            <tr th:each="board : ${boardList}">
+                <td th:text="${board.number}"></td>
+                <td th:text="${board.head}"></td>
+                <td><a th:href="@{'/post' + ${board.id}}"><span th:text="${board.title}"></span></a></td>
+                <td th:text="${board.writer}"></td>
+                <td th:text="${board.date}"></td>
+                <td th:text="${board.views}"></td>
+                <td th:text="${board.recom}"></td>
             </tr>
             </tbody>
         </table>
         <div class="page-control">
-            <div class="list-num"><a th:each="i: ${#numbers.sequence(1, 10)}"><a th:text="${i}"></a></a><a
+            <div class="list-num"><a href="#previousPage" class="pageindex">이전</a><a
+                    th:each="i: ${#numbers.sequence(1, 10)}"><a th:text="${i}"></a></a><a
                     href="#nextPage" class="pageindex">다음</a><a href="#endPage"
                                                                 class="pageindex">끝</a>
-                <a href="#writing" class="writing">
+                <a th:href="@{/writing}" class="writing">
                     글쓰기
                 </a>
             </div>
@@ -183,32 +203,33 @@
         <table class="board">
             <thead>
             <tr>
-                <th scope="cols">번호</th>
-                <th scope="cols">말머리</th>
-                <th scope="cols">제목</th>
-                <th scope="cols">글쓴이</th>
-                <th scope="cols">작성일</th>
-                <th scope="cols">조회</th>
-                <th scope="cols">추천</th>
+                <th scope="cols" class="con-board-num">번호</th>
+                <th scope="cols" class="con-board-head">말머리</th>
+                <th scope="cols" class="con-board-title">제목</th>
+                <th scope="cols" class="con-board-writer">글쓴이</th>
+                <th scope="cols" class="con-board-date">작성일</th>
+                <th scope="cols" class="con-board-views">조회</th>
+                <th scope="cols" class="con-board-recom">추천</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="i: ${#numbers.sequence(1, 10)}">
-                <td th:text="${i}" scope="cols"></td>
-                <td>일반</td>
-                <td th:text="글제목+ ${i}"></td>
-                <td th:text="글쓴이+ ${i}"></td>
-                <td th:text="1월 + ${i}"></td>
-                <td th:text="${i}"></td>
-                <td th:text="${i}"></td>
+            <tr th:each="board : ${boardList}">
+                <td th:text="${board.number}"></td>
+                <td th:text="${board.head}"></td>
+                <td><a th:href="@{'/post' + ${board.id}}"><span th:text="${board.title}"></span></a></td>
+                <td th:text="${board.writer}"></td>
+                <td th:text="${board.date}"></td>
+                <td th:text="${board.views}"></td>
+                <td th:text="${board.recom}"></td>
             </tr>
             </tbody>
         </table>
         <div class="page-control">
-            <div class="list-num"><a th:each="i: ${#numbers.sequence(1, 10)}"><a th:text="${i}"></a></a><a
+            <div class="list-num"><a href="#previousPage" class="pageindex">이전</a><a
+                    th:each="i: ${#numbers.sequence(1, 10)}"><a th:text="${i}"></a></a><a
                     href="#nextPage" class="pageindex">다음</a><a href="#endPage"
                                                                 class="pageindex">끝</a>
-                <a href="#writing" class="writing">
+                <a th:href="@{/writing}" class="writing">
                     글쓰기
                 </a>
             </div>
