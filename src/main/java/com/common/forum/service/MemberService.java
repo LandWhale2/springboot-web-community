@@ -22,6 +22,7 @@ import org.springframework.validation.FieldError;
 
 import com.common.forum.domain.entity.MemberEntity;
 import com.common.forum.domain.repository.MemberRepository;
+import com.common.forum.dto.MailDto;
 import com.common.forum.dto.MemberDto;
 import com.common.forum.security.CustomUserDetails;
 import com.common.forum.security.Role;
@@ -34,6 +35,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class MemberService implements UserDetailsService {
 
+	private MailService mailService;
 	
     private MemberRepository memberRepository;
     
@@ -48,8 +50,8 @@ public class MemberService implements UserDetailsService {
         
         memberRepository.save(memberDto.toEntity());
         
-//        MailDto mailDto = mailService.setMailDto(memberDto);
-//        mailService.mailSend(mailDto);
+        MailDto mailDto = mailService.setMailDto(memberDto);
+        mailService.mailSend(mailDto);
     }
 
 	
