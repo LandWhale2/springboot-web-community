@@ -1,3 +1,7 @@
+#wrapper {
+    width: 100%;
+}
+
 header {
     margin: 1px;
     font-family: Arial, Helvetica, sans-serif;
@@ -162,7 +166,7 @@ body {
     grid-template-columns: auto auto;
 }
 
-.container div{
+.container div {
     margin: 19px 60px;
     padding: 0 20px;
     width: 700px;
