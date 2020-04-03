@@ -4,13 +4,21 @@ header {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
-<--  맨 위 부분  -->
+
+.table-1 tr td {
+  color: black;
+}
 .top-bar {
   overflow: hidden;
   background-color: white;
   padding-top: 15px;
   vertical-align: center;
   text-align: center;
+<<<<<<< HEAD
+=======
+
+  margin: 0px 15px;
+>>>>>>> 5451bdef9f526fc56253dd4845feb50ac1ea75c6
 }
 
 .top-bar a {
@@ -101,9 +109,23 @@ header {
   border: #0e51ff thin solid;
   border-radius: 15px;
 }
+<<<<<<< HEAD
 
 .tab ul {
   padding: 8px 0;
+=======
+
+.tab {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  vertical-align: center;
+}
+
+.tab ul {
+  padding: 8px 20px;
+  margin: 0;
+
+>>>>>>> 5451bdef9f526fc56253dd4845feb50ac1ea75c6
   list-style: none;
   width: 100%;
   height: auto;
@@ -112,6 +134,14 @@ header {
 
 .tab ul li {
   display: inline-block;
+<<<<<<< HEAD
+=======
+
+  padding: 15px 120px;
+  text-align: center;
+  cursor: pointer;
+
+>>>>>>> 5451bdef9f526fc56253dd4845feb50ac1ea75c6
   border-bottom: thin solid gray;
 }
 
@@ -132,7 +162,13 @@ header {
 .tab .conBox.on {
   display: block;
 }
-<-- 탭 부분 종료 및 몸체 파트 -->
+
+.tab a {
+  text-decoration: none;
+  color: black;
+}
+
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   color: black;
@@ -147,6 +183,14 @@ body {
 .container .Recom-board,
 .container .Free_board,
 .container .Tip-board {
+<<<<<<< HEAD
+=======
+  margin: auto;
+  padding: 0px 20px;
+  width: 600px;
+  height: 400px;
+
+>>>>>>> 5451bdef9f526fc56253dd4845feb50ac1ea75c6
   border: thin solid black;
   box-shadow: 10px 10px 10px gray;
 }
@@ -159,6 +203,10 @@ body {
   vertical-align: center;
   padding: 0px 10px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5451bdef9f526fc56253dd4845feb50ac1ea75c6
 .container .phrase {
   border-bottom: thin solid lavender;
   padding: 10px 0px;
