@@ -23,6 +23,7 @@ import org.springframework.validation.FieldError;
 import com.common.forum.domain.entity.MemberEntity;
 import com.common.forum.domain.repository.MemberRepository;
 import com.common.forum.dto.MemberDto;
+import com.common.forum.security.CustomUserDetails;
 import com.common.forum.security.Role;
 
 import lombok.AllArgsConstructor;
@@ -70,16 +71,15 @@ public class MemberService implements UserDetailsService {
         
         
         
-//        CustomUserDetails user = new CustomUserDetails(
-//        		userEntity.getEmail(),
-//        		userEntity.getPassword(),
-//        		true, true, true, true,
-//        		authorities,
-//        		userEntity.getEmail(),
-//        		userEntity.getNickname());
+        CustomUserDetails user = new CustomUserDetails(
+        		userEntity.getEmail(),
+        		userEntity.getPassword(),
+        		true, true, true, true,
+        		authorities,
+        		userEntity.getEmail(),
+        		userEntity.getNickname());
         
-        User user = new User(userEntity.getEmail(),
-        		userEntity.getPassword(), authorities);
+        
         
         
         return user;
