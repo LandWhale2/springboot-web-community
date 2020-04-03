@@ -17,4 +17,10 @@ public class MemberController {
 	public String signin() {
 		return "index/signIn";
 	}
+	
+	
+	@GetMapping("/signup")
+	public String signup() {
+		return "index/signUp";
+	}
 }
