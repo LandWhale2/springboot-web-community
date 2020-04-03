@@ -25,6 +25,7 @@ import com.common.forum.domain.repository.MemberRepository;
 import com.common.forum.dto.MemberDto;
 import com.common.forum.security.CustomUserDetails;
 import com.common.forum.security.Role;
+import com.common.forum.security.TempKey;
 
 import lombok.AllArgsConstructor;
 
@@ -42,7 +43,7 @@ public class MemberService implements UserDetailsService {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         memberDto.setPassword(passwordEncoder.encode(memberDto.getPassword()));
         
-//        memberDto.setAuthkey(new TempKey().getKey(50, false));
+        memberDto.setAuthkey(new TempKey().getKey(50, false));
         
         
         memberRepository.save(memberDto.toEntity());
