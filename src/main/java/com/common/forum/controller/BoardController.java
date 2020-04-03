@@ -12,4 +12,5 @@ public class BoardController {
     public String test() {
         return "main";
     }
+	
 }
