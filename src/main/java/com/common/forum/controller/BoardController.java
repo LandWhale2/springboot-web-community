@@ -10,6 +10,6 @@ import java.util.List;
 public class BoardController {
 	@GetMapping("/test")
     public String test() {
-        return "main.html";
+        return "main";
     }
 }

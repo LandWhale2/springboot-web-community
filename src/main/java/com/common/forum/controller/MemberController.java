@@ -15,12 +15,12 @@ public class MemberController {
 	
 	@GetMapping("/signin")
 	public String signin() {
-		return "index/signIn";
+		return "signIn";
 	}
 	
 	
 	@GetMapping("/signup")
 	public String signup() {
-		return "index/signUp";
+		return "signUp";
 	}
 }
