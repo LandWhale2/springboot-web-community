@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.common.forum.service.MemberService;
+
 import lombok.AllArgsConstructor;
 
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.List;
 public class BoardController {
 	@GetMapping("/")
     public String test() {
+		
         return "main";
     }
 	

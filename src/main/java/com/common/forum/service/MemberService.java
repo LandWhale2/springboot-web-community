@@ -83,6 +83,7 @@ public class MemberService implements UserDetailsService {
         		userEntity.getNickname());
         
         
+        System.out.println(user);
         
         
         return user;
@@ -100,6 +101,14 @@ public class MemberService implements UserDetailsService {
         return validatorResult;
     }
 	
+	
+	
+	public static String currentUserNickname() {
+    	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    	
+    	CustomUserDetails user = (CustomUserDetails) authentication.getPrincipal();
+    	return user.getUser_name();
+    }
 	
 	
 }

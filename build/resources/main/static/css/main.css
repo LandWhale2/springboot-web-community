@@ -1,11 +1,16 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 #wrapper {
     width: 100%;
     font-size: 17px;
+
 }
 
 header {
     margin: 1%;
-    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     vertical-align: center;
 }
@@ -62,7 +67,7 @@ header {
 .top-bar-right .Alarm {
     font-size: 2rem;
     color: gray;
-    margin-top: 5px;
+    margin-top: 2%;
 }
 
 .top-bar-right .SignIn {
@@ -75,7 +80,7 @@ header {
     text-decoration: none;
     font-size: 20px;
     border: #0e51ff thin solid;
-    border-radius: 15px;
+    border-radius: 1rem;
 }
 
 .top-bar-right .SignUp {
@@ -84,17 +89,45 @@ header {
     width: 60px;
     height: 25px;
     margin-right: 20px;
-    margin-left: 10px;
     text-decoration: none;
     font-size: 20px;
     border: #0e51ff thin solid;
-    border-radius: 15px;
+    border-radius: 1rem;
 }
 
-.tab {
-    font-family: Arial, Helvetica, sans-serif;
+.tab a {
+    text-decoration: none;
+    color: black;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 2%;
+
+}
+
+.tab ul {
+    list-style: none;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+
+}
+
+.tab ul li {
+    display: inline-block;
+    margin: 0;
+    width: 19%;
+    height: 25px;
+    padding: 25px 0 10px 0;
     text-align: center;
-    vertical-align: center;
+    cursor: pointer;
+    border-bottom: thin solid gray;
+}
+
+.tab ul li:hover, .tab ul li.on {
+    border-bottom: 8px solid #0e51ff;
 }
 
 .tab .conBox {
@@ -110,44 +143,12 @@ header {
     display: block;
 }
 
-.tab a {
-    text-decoration: none;
-    color: black;
-}
-
-.tab ul {
-    margin: 0;
-    list-style: none;
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-}
-
-.tab ul li {
-    display: inline-block;
-    width: 19%;
-    height: 25px;
-    padding: 25px 0 5px 0;
-    text-align: center;
-    cursor: pointer;
-    border-bottom: thin solid gray;
-}
-
-.tab ul li:hover, .tab ul li.on {
-    border-bottom: 8px solid #0e51ff;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: black;
-}
 
 .table-1 tr td {
     color: black;
 }
 
 .container {
-    margin: auto;
     display: grid;
     grid-template-columns: auto auto;
 }
@@ -260,8 +261,4 @@ table.table-1 td {
     padding: 10px 10px;
     border-radius: 10px;
     margin: 10px;
-}
-
-.blue {
-    width: 30px;
 }
