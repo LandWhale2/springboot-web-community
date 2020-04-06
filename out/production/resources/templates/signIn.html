@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/signIn.css}" type="text/css">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+<header>
+    <div class="top-bar">
+        <a href="signIn.html" class="logo">커뮤니티</a>
+        <a href="signIn.html" class="signIn">로그인</a>
+    </div>
+</header>
+<body>
+<div class="container">
+    <form action="/user/login" method="post">
+        <div class="row">
+            <div class="login">
+                <input type="text" th:name="username" placeholder="ID" required>
+                <input type="password" th:name="password" placeholder="비밀번호" required>
+                <input type="submit" th:value="로그인">
+            </div>
+            <div class="vl"><span class="vl-innertext">or</span></div>
+            <div class="social">
+                <div class="social-btn"><a href="#" class="naver btn">
+                    <img th:src="@{/assets/naver_logo.png}"> <span>네이버로 로그인</span>
+                </a></div>
+                <div class="social-btn"><a href="#" class="google btn">
+                    <img th:src="@{/assets/google_logo.png}"><span>구글로 로그인</span>
+                </a></div>
+            </div>
+        </div>
+    </form>
+    <div class="bottom-container">
+        <div class="bottom-container-btn"><a th:href="@{/signup}" style="color: white" class="btn">회원가입</a></div>
+        <div class="bottom-container-btn"><a href="#" style="color: white" class="btn">비밀번호 찾기</a></div>
+
+    </div>
+</div>
+
+
+</body>
+</html>

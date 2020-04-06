@@ -1,0 +1,267 @@
+#wrapper {
+    width: 100%;
+    font-size: 17px;
+}
+
+header {
+    margin: 1%;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    vertical-align: center;
+}
+
+.top-bar {
+    overflow: hidden;
+    background-color: white;
+    padding-top: 1%;
+    vertical-align: center;
+    text-align: center;
+    margin: 0 1%;
+}
+
+.top-bar a {
+    float: left;
+    display: block;
+    color: black;
+    text-decoration: none;
+}
+
+.top-bar .logo {
+    margin: 0 3% 0 1%;
+    font-size: 2.5rem;
+    font-weight: bolder;
+}
+
+.top-bar .search-container {
+    float: left;
+}
+
+.top-bar input[type="text"] {
+    font-size: 1.5rem;
+    padding: 10px 20px;
+}
+
+.top-bar .search-container button {
+    float: left;
+    background: #0e51ff;
+    padding: 12px 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    color: white;
+}
+
+.top-bar .search-container button:hover {
+    background: #ccc;
+}
+
+.top-bar-right {
+    float: right;
+}
+
+.top-bar-right .Alarm {
+    font-size: 2rem;
+    color: gray;
+    margin-top: 5px;
+}
+
+.top-bar-right .SignIn {
+    color: #0e51ff;
+    padding: 10px 20px;
+    width: 60px;
+    height: 25px;
+    margin-right: 10px;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    border: #0e51ff thin solid;
+    border-radius: 15px;
+}
+
+.top-bar-right .SignUp {
+    color: #0e51ff;
+    padding: 10px 20px;
+    width: 60px;
+    height: 25px;
+    margin-right: 20px;
+    margin-left: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    border: #0e51ff thin solid;
+    border-radius: 15px;
+}
+
+.tab {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    vertical-align: center;
+}
+
+.tab .conBox {
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    background: white;
+    display: none;
+    text-align: center;
+}
+
+.tab .conBox.on {
+    display: block;
+}
+
+.tab a {
+    text-decoration: none;
+    color: black;
+}
+
+.tab ul {
+    margin: 0;
+    list-style: none;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.tab ul li {
+    display: inline-block;
+    width: 19%;
+    height: 25px;
+    padding: 25px 0 5px 0;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: thin solid gray;
+}
+
+.tab ul li:hover, .tab ul li.on {
+    border-bottom: 8px solid #0e51ff;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+.table-1 tr td {
+    color: black;
+}
+
+.container {
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.container div {
+    margin: 19px 60px;
+    padding: 0 20px;
+    width: 700px;
+    height: 500px;
+    border: thin solid black;
+    box-shadow: 10px 10px 10px gray;
+}
+
+table.table-1 td {
+    vertical-align: top;
+    border-bottom: 1px solid grey;
+    font-size: 19px;
+    height: 40px;
+    width: 80%;
+}
+
+.table-1 .table-1-title {
+    width: 500px;
+}
+
+.table-1 .table-1-views, .table-1 .table-1-rec {
+    width: 100px;
+}
+
+.board {
+    margin: 20px 60px;
+    padding: 10px 20px;
+    width: 90%;
+    height: auto;
+    box-shadow: 10px 10px 10px gray;
+    border: 1px solid snow;
+    border-collapse: collapse;
+    text-align: center;
+    line-height: 2;
+}
+
+.board th {
+    width: 30px;
+    padding: 10px;
+    vertical-align: top;
+    text-align: center;
+    color: black;
+    border-bottom: 1px solid black;
+}
+
+.board .blue {
+    width: 10px;
+}
+
+.board tbody tr {
+    text-align: center;
+}
+
+.board tbody .board-head {
+    width: 10px;
+}
+
+.board td {
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid gray;
+}
+
+.title {
+    text-align: left;
+    margin: 10px 60px;
+}
+
+.conBox .page-control {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.conBox .page-control .list-num {
+    margin-left: 200px;
+    color: black;
+}
+
+.conBox .page-control .list-num .writing {
+    float: right;
+    color: white;
+    background: #0e51ff;
+    padding: 10px 40px;
+    width: 60px;
+    height: 25px;
+    margin-right: 80px;
+    text-decoration: none;
+    font-size: 20px;
+    border: #0e51ff thin solid;
+    border-radius: 15px;
+    margin-top: 0px;
+}
+
+.conBox .page-control .list-num a {
+    margin-left: 10px;
+    color: black;
+    padding: 0px 10px;
+    text-decoration: none;
+}
+
+.conBox .page-control .list-num a pageindex {
+    border: #0e51ff thin solid;
+    width: 20px;
+    height: 20px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.blue {
+    width: 30px;
+}
