@@ -27,7 +27,7 @@ public class MemberController {
 	private MailService mailService;
 	
 	
-	@GetMapping("/signin")
+	@GetMapping("/user/login")
 	public String signin() {
 		return "signIn";
 	}
@@ -105,11 +105,7 @@ public class MemberController {
         return "main";
     }
 
-    // 어드민 페이지
-    @GetMapping("/admin")
-    public String dispAdmin() {
-        return "main";
-    }
+    
     
     
     @GetMapping({"/loginSuccess", "/hello"})
