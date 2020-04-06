@@ -63,6 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                                .exceptionHandling().accessDeniedPage("/user/denied").and().csrf().disable();
     }
 
+	
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(memberService).passwordEncoder(passwordEncoder());

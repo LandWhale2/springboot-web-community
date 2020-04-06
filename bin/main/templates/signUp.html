@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/css/signUp.css}" type="text/css">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
@@ -15,19 +17,20 @@
 <body>
 <form th:action="@{/user/signup}" class="container" method="post">
     <div class="form">
-        <label for="Id"><b>ID</b></label>
-        <input type="text" placeholder="ID 를 입력해주세요" name="ID" required>
-        <label for="psw"><b>비밀번호</b></label>
-        <input type="password" placeholder="비밀번호를 입력해주세요" name="psw" required>
-        <label for="psw-repeat"><b>비밀번호 확인</b></label>
-        <input type="password" placeholder="비밀번호를 다시 입력해주세요" name="psw-repeat" required>
-        <label for="nickname"><b>닉네임</b></label>
-        <input type="text" placeholder="닉네임을 입력해주세요" name="nickname" required>
         <label for="email"><b>E-mail</b></label>
-        <input type="text" placeholder="E-mail 을 입력해주세요" name="email" required>
+        <input type="text" placeholder="E-mail 을 입력해주세요오오" name="email" th:value="${email}" required>
+        <span th:text="valid_email"></span>
+        <label for="psw"><b>비밀번호</b></label>
+        <input type="password" placeholder="비밀번호를 입력해주세요" name="password" th:value="${password}" required>
+        <span th:text="valid_password"></span>
+        <label for="psw-repeat"><b>비밀번호 확인</b></label>
+        <input type="password" placeholder="비밀번호를 다시 입력해주세요" name="password2" th:value="${password}" required>
+        <span th:text="valid_password_repeat"></span>
+        <label for="nickname"><b>닉네임</b></label>
+        <input type="text" placeholder="닉네임을 입력해주세요" name="nickname" th:value="${nickname}" required>
+        <span th:text="valid_nickname"></span>
         <label><input type="checkbox" checked="checked" name="remember"> 개인정보 및 약관 동의</label>
         <p>By creating an account you agree to our <a href="#agree" style="color: dodgerblue"> Terms & Privacy</a></p>
-
         <div class="clearfix">
             <button type="button" class="cancelbtn">Cancel</button>
             <button type="submit" class="signupbtn">Sign Up</button>
