@@ -16,4 +16,15 @@ public class BoardController {
     public String test() {
         return "main";
     }
+	
+//	@GetMapping("/category")
+//	public String asd() {
+//		return "category";
+//	}
+//	
+//	@PostMapping("/category")
+//	public String catego() {
+//		System.out.println("asd");;
+//		return "redirect:/";
+//	}
 }
