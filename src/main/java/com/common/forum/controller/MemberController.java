@@ -2,7 +2,7 @@ package com.common.forum.controller;
 
 import java.util.Map;
 
-
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -41,6 +41,7 @@ public class MemberController {
 	
 	@PostMapping("/user/signup")
     public String execSignup(@Valid MemberDto memberDto, Errors errors, Model model) {
+		System.out.println("asdad");
     	if (errors.hasErrors()) {
             // 회원가입 실패시, 입력 데이터를 유지
             model.addAttribute("memberDto", memberDto);
@@ -59,5 +60,44 @@ public class MemberController {
 
 
         return "redirect:/";
+    }
+	
+	
+	
+
+    // 로그인 결과 페이지
+    @GetMapping("/user/login/result")
+    public String dispLoginResult() {
+        return "member/loginSuccess";
+    }
+
+    // 로그아웃 결과 페이지
+    @GetMapping("/user/logout/result")
+    public String dispLogout() {
+        return "member/logout";
+    }
+
+    // 접근 거부 페이지
+    @GetMapping("/user/denied")
+    public String dispDenied() {
+        return "main";
+    }
+
+    // 내 정보 페이지
+    @GetMapping("/user/info")
+    public String dispMyInfo(HttpServletRequest httpRequest) {
+        return "main";
+    }
+
+    // 어드민 페이지
+    @GetMapping("/admin")
+    public String dispAdmin() {
+        return "main";
+    }
+    
+    
+    @GetMapping({"/loginSuccess", "/hello"})
+    public String loginSuccess() {
+    	return "main";
     }
 }

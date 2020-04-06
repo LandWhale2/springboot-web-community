@@ -1,6 +1,7 @@
 package com.common.forum.security;
 
 import org.springframework.context.annotation.Bean;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -39,26 +40,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/lib/**", "/assets/**");
 	}
 	
+	
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 // 페이지 권한 설정
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/info/**").hasRole("MEMBER")
-                .antMatchers("/**").permitAll()
+                                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/user/myinfo").hasRole("MEMBER")
+                .antMatchers("/**", "/user/signup").permitAll()
             .and() // 로그인 설정
-                .formLogin()
+                                .formLogin()
                 .loginPage("/user/login")
                 .defaultSuccessUrl("/user/login/result")
                 .permitAll()
             .and() // 로그아웃 설정
-                .logout()
+                               .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
                 .logoutSuccessUrl("/user/logout/result")
                 .invalidateHttpSession(true)
             .and()
                 // 403 예외처리 핸들링
-                               .exceptionHandling().accessDeniedPage("/user/denied");
+                               .exceptionHandling().accessDeniedPage("/user/denied").and().csrf().disable();
     }
 
     @Override
