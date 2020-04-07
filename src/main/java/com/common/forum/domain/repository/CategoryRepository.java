@@ -12,6 +12,7 @@ import com.common.forum.domain.entity.CategoryEntity;
 
 public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> {
 
-	Optional<CategoryEntity> findById(Long categoryId);
+
+	Optional<CategoryEntity> findByName(String category);
 
 }
