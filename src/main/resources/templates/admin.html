@@ -10,7 +10,8 @@
 <div class="sidebar">
     <h1>카테고리</h1>
     <form th:action="@{/admin/category}">
-        <input type="text" th:name="name" placeholder="이름" required>
+        <input type="text" th:name="name" placeholder="카테고리 이름" required>
+        <input type="submit" th:value="입력">
     </form>
 </div>
 </body>
