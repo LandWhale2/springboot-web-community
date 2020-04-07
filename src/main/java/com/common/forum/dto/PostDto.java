@@ -42,13 +42,13 @@ public class PostDto {
 	//dto에 필요한 부분을 빌더패턴을 통해 entity로 만듭니다.
 	//dto는 Controller <> Service <> Repository 간에필요한 데이터를캡슐화한 데이터전달객체
 	
-	public PostEntity toEntity(CategoryEntity categoryentity){
+	public PostEntity toEntity(){
         PostEntity build = PostEntity.builder()
                 .id(id)
                 .writer(writer)
                 .title(title)
                 .content(content)
-                .categoryEntity(categoryentity)
+                .categoryEntity(categoryEntity)
                 .comment(comment)
                 .hit(hit)
                 .build();

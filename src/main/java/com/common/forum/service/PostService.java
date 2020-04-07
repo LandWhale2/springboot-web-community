@@ -64,7 +64,9 @@ public class PostService {
 		
 		CategoryEntity categoryEntity = categoryService.getCategoryEntity(postDto.getCategory());
 		
-		Long postid = postRepository.save(postDto.toEntity(categoryEntity)).getId();
+		postDto.setCategoryEntity(categoryEntity);
+		
+		Long postid = postRepository.save(postDto.toEntity()).getId();
 		
 		PostEntity postEntity = this.getPostEntity(postid);
 		
