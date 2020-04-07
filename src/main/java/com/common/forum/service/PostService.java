@@ -83,8 +83,9 @@ public class PostService {
 		PostEntity postEntity = this.getPostEntity(postDto.getId());
 		PostDto postDTO = this.convertEntityToDto(postEntity);
 		postDTO.setTitle(postDto.getTitle());
-		postDTO.setContent(postDto.getContent());		
-		return postRepository.save(postDto.toEntity(postDTO.getCategoryEntity())).getId();
+		postDTO.setContent(postDto.getContent());
+		postDto.setCategoryEntity(postDTO.getCategoryEntity());
+		return postRepository.save(postDto.toEntity()).getId();
 	}
 	
 	
@@ -245,8 +246,9 @@ public class PostService {
 		
 		
 		postDto.setHit(posthit);
+		postDto.setCategoryEntity(postDto.getCategoryEntity());
 		
-		postRepository.save(postDto.toEntity(postDto.getCategoryEntity()));
+		postRepository.save(postDto.toEntity());
 		
 	}
 	
