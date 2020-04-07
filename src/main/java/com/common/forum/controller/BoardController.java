@@ -48,7 +48,7 @@ public class BoardController {
 		model.addAttribute("boardList", postList);
 		model.addAttribute("pageList", pageList);
 		
-		return "board/listbycategory";
+		return "";
 	}
 
 	

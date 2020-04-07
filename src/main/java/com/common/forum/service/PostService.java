@@ -239,10 +239,10 @@ public class PostService {
 	public void addhit(Long id) {
 		PostEntity postEntity = this.getPostEntity(id);
 		PostDto postDto = this.convertEntityToDto(postEntity);
-		int posthit = postDto.getHit();
+		int posthit = postDto.getHit() + 1;
 		
 		
-		postDto.setHit(posthit+1);
+		postDto.setHit(posthit);
 		
 		postRepository.save(postDto.toEntity(postDto.getCategoryEntity()));
 		
