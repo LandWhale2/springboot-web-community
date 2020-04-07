@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.common.forum.domain.entity.CategoryEntity;
+import com.common.forum.domain.entity.CommentEntity;
 import com.common.forum.domain.entity.PostEntity;
 
 
@@ -22,7 +23,7 @@ public class PostDto {
 	private LocalDateTime createdDate;
 	private LocalDateTime modifiedDate;
 	private CategoryEntity categoryEntity;
-//	private List<CommentEntity> comment;
+	private List<CommentEntity> comment;
 	private Long categoryid;
 	private int hit;
 	private int commentcount;
@@ -31,9 +32,9 @@ public class PostDto {
 	
 	
 	
-//	public void setCommentCount() {
-//		this.commentcount = this.comment.size();
-//	}
+	public void setCommentCount() {
+		this.commentcount = this.comment.size();
+	}
 	
 	
 	
@@ -48,7 +49,7 @@ public class PostDto {
                 .title(title)
                 .content(content)
                 .categoryEntity(categoryentity)
-//                .comment(comment)
+                .comment(comment)
                 .hit(hit)
                 .build();
         return build;
@@ -60,7 +61,7 @@ public class PostDto {
 	//이렇게되면 런타임시에 오류를 많이 보게되고 , 빌더패턴은 이를줄여준다.
 	
 	@Builder
-    public PostDto(Long id, String title, String content, String writer, LocalDateTime createdDate, LocalDateTime modifiedDate, int hit, CategoryEntity categoryEntity) {
+    public PostDto(Long id, String title, String content, String writer, LocalDateTime createdDate, LocalDateTime modifiedDate, int hit, CategoryEntity categoryEntity, List<CommentEntity> comment) {
         this.id = id;
         this.writer = writer;
         this.title = title;
@@ -69,7 +70,7 @@ public class PostDto {
         this.modifiedDate = modifiedDate;
         this.hit = hit;
         this.categoryEntity = categoryEntity;
-//        this.comment = comment;
+        this.comment = comment;
         
     }
 	
