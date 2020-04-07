@@ -52,4 +52,10 @@ public class BoardController {
 	}
 
 	
+	@GetMapping("/{category}/writing")
+    public String write(Model model, @PathVariable("category") String category) {
+    	model.addAttribute("categoryList", category);
+        return "writing";
+    }
+	
 }
