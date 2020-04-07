@@ -39,8 +39,8 @@ public class PostService {
 	}
 	
 	
-	public CategoryEntity getCategoryEntity(Long id) {
-		Optional<CategoryEntity> CategoryEntityWrapper = categoryRepository.findById(id);
+	public CategoryEntity getCategoryEntity(String category) {
+		Optional<CategoryEntity> CategoryEntityWrapper = categoryRepository.findByName(category);
 		
 		CategoryEntity categoryEntity = CategoryEntityWrapper.get();
 		
@@ -70,9 +70,7 @@ public class PostService {
 	@Transactional
     public void savePost(PostDto postDto) {
 		
-		Long categoryid = postDto.getCategoryid();
-		
-		CategoryEntity categoryEntity = this.getCategoryEntity(categoryid);
+		CategoryEntity categoryEntity = this.getCategoryEntity(postDto.getCategory());
 		
 		Long postid = postRepository.save(postDto.toEntity(categoryEntity)).getId();
 		
@@ -180,21 +178,21 @@ public class PostService {
 	
 	
 	@Transactional
-	public Long getPostCount(Long categoryId) {
-		if (categoryId == 0)
+	public Long getPostCount(String category) {
+		if (category == null)
 			return postRepository.count();
 		
-		CategoryEntity categoryentity = this.getCategoryEntity(categoryId);
+		CategoryEntity categoryentity = this.getCategoryEntity(category);
 		return (long) postRepository.findAllByCategoryEntity(categoryentity).size();
 	}
 	
 	
 	
-	public Integer[] getPageList(Integer curPageNum, Long categoryId) {
+	public Integer[] getPageList(Integer curPageNum, String category) {
 		Integer[] pageList = new Integer[BLOCK_PAGE_NUM_COUNT];
 		
 		// 총 게시글 수
-		Double postsTotalCount = Double.valueOf(this.getPostCount(categoryId));
+		Double postsTotalCount = Double.valueOf(this.getPostCount(category));
 		
 		// 총 게시글 기준으로 계산한 마지막 페이지 번호 계산
 		Integer totalLastPageNum = (int)(Math.ceil((postsTotalCount/PAGE_POST_COUNT)));
@@ -222,9 +220,9 @@ public class PostService {
 	
 	
 	@Transactional
-	public List<PostDto> getPostListByCategoryid(Long CategoryId, Integer pageNum) {
+	public List<PostDto> getPostListByCategoryid(String category, Integer pageNum) {
 		PageRequest pageRequest = PageRequest.of(pageNum-1, PAGE_POST_COUNT,Sort.by(Sort.Direction.ASC, "createdDate"));
-		CategoryEntity categoryEntity = this.getCategoryEntity(CategoryId);
+		CategoryEntity categoryEntity = this.getCategoryEntity(category);
 		Page<PostEntity> page = postRepository.findAllByCategoryEntity(categoryEntity, pageRequest);
 		
 		List<PostEntity> postEntities = page.getContent();

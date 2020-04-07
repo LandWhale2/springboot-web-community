@@ -24,7 +24,7 @@ public class PostDto {
 	private LocalDateTime modifiedDate;
 	private CategoryEntity categoryEntity;
 	private List<CommentEntity> comment;
-	private Long categoryid;
+	private String category;
 	private int hit;
 	private int commentcount;
 	
