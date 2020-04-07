@@ -53,9 +53,9 @@ public class PostEntity extends TimeEntity{
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
     
-//    @ManyToOne
-//    @JoinColumn(name="category_id")
-//    private CategoryEntity categoryEntity;
+    @ManyToOne
+    @JoinColumn(name="category_id")
+    private CategoryEntity categoryEntity;
 //    
 //    @OneToMany(mappedBy="postEntity", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 //    private List<CommentEntity> comment = new ArrayList<>();
@@ -77,29 +77,29 @@ public class PostEntity extends TimeEntity{
     
     
 	
-//    public void setPostEntityAndCategoryEntity(CategoryEntity categoryentity) {
-//    	
-//    	if(this.categoryEntity != null)
-//    		this.categoryEntity.getPost().remove(this);
-//    	
-//    	this.categoryEntity = categoryentity;
-//    	
-//    	categoryentity.getPost().add(this);
-//    	
-//    	
-//    }
+    public void setPostEntityAndCategoryEntity(CategoryEntity categoryentity) {
+    	
+    	if(this.categoryEntity != null)
+    		this.categoryEntity.getPost().remove(this);
+    	
+    	this.categoryEntity = categoryentity;
+    	
+    	categoryentity.getPost().add(this);
+    	
+    	
+    }
     
     
     
 	//Builder 패턴 클래시를 생성해주는 annotation, @Setter 사용대신 빌더패턴을 사용해야  안정성을 보장가능
 	
     @Builder
-    public PostEntity(Long id, String title, String content, String writer, int hit) {
+    public PostEntity(Long id, String title, String writer, String content, CategoryEntity categoryEntity,  int hit) {
         this.id = id;
         this.writer = writer;
         this.title = title;
         this.content = content;
-//        this.categoryEntity = categoryEntity;
+        this.categoryEntity = categoryEntity;
 //        this.comment = comment;
 //        this.setPostEntityAndCategoryEntity(categoryEntity);
         this.hit = hit;
