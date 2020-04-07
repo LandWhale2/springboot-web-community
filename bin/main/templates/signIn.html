@@ -17,7 +17,7 @@
 </header>
 <body>
 <div class="container">
-    <form action="/user/login" method="post">
+    <form th:action="@{/user/login}" method="post">
         <div class="row">
             <div class="login">
                 <input type="text" th:name="username" placeholder="ID" required>
