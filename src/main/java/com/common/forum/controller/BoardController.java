@@ -58,4 +58,67 @@ public class BoardController {
         return "writing";
     }
 	
+	
+	//  게시물 쓰기
+    
+	@PostMapping("/{category}/writing")
+	public String write(PostDto postDto) {
+  	
+		//로그인중인 닉네임
+		String writer = MemberService.currentUserNickname();
+		postDto.setWriter(writer);
+  	
+  	
+		postService.savePost(postDto);
+      
+
+		return "redirect:/";
+	}
+	
+	//게시물 디테일
+	@GetMapping("/{category}/{no}")
+    public String detail(@PathVariable("no") Long no, Model model) {
+    	PostDto postDTO = postService.getPostDto(no);
+    	postService.addhit(no);
+    	
+    	model.addAttribute("boardDto", postDTO);
+    	return "board/detail.html";
+    }
+	
+	
+	//게시물 수정
+	@GetMapping("/{category}/edit/{no}")
+    public String edit(@PathVariable("no") Long no, Model model) {
+    	PostDto postDTO = postService.getPostDto(no);
+    	
+    	model.addAttribute("boardDto", postDTO);
+    	return "board/update.html";
+    }
+	
+	@PostMapping("/{category}/edit/{no}")
+    public String update(PostDto boardDTO) {
+        postService.updatePost(boardDTO);
+
+        return "redirect:/";
+    }
+	
+	//게시물 삭제
+	@PostMapping("/{category}/{no}")
+    public String delete(@PathVariable("no") Long no) {
+        postService.deletePost(no);
+
+        return "redirect:/";
+    }
+	
+	//게시물 검색
+	@GetMapping("/board/search")
+    public String search(@RequestParam(value="keyword") String keyword, Model model) {
+    	List<PostDto> postDtoList = postService.searchPosts(keyword);
+    	
+    	model.addAttribute("boardList", postDtoList);
+    	
+    	return "board/list.html";
+    }
+	
+	
 }
