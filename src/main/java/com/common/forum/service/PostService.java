@@ -27,6 +27,7 @@ import java.util.Optional;
 public class PostService {
 	private PostRepository postRepository;
 	private CategoryRepository categoryRepository;
+	private CategoryService categoryService;
 	
 	
 	//get dto, entity
@@ -39,15 +40,6 @@ public class PostService {
 	}
 	
 	
-	public CategoryEntity getCategoryEntity(String category) {
-		Optional<CategoryEntity> CategoryEntityWrapper = categoryRepository.findByName(category);
-		
-		CategoryEntity categoryEntity = CategoryEntityWrapper.get();
-		
-		
-		return categoryEntity;
-		
-	}
 	
 	
 	public PostEntity getPostEntity(Long id) {
@@ -70,7 +62,7 @@ public class PostService {
 	@Transactional
     public void savePost(PostDto postDto) {
 		
-		CategoryEntity categoryEntity = this.getCategoryEntity(postDto.getCategory());
+		CategoryEntity categoryEntity = categoryService.getCategoryEntity(postDto.getCategory());
 		
 		Long postid = postRepository.save(postDto.toEntity(categoryEntity)).getId();
 		
@@ -182,7 +174,7 @@ public class PostService {
 		if (category == null)
 			return postRepository.count();
 		
-		CategoryEntity categoryentity = this.getCategoryEntity(category);
+		CategoryEntity categoryentity = categoryService.getCategoryEntity(category);
 		return (long) postRepository.findAllByCategoryEntity(categoryentity).size();
 	}
 	
@@ -222,7 +214,7 @@ public class PostService {
 	@Transactional
 	public List<PostDto> getPostListByCategoryid(String category, Integer pageNum) {
 		PageRequest pageRequest = PageRequest.of(pageNum-1, PAGE_POST_COUNT,Sort.by(Sort.Direction.ASC, "createdDate"));
-		CategoryEntity categoryEntity = this.getCategoryEntity(category);
+		CategoryEntity categoryEntity = categoryService.getCategoryEntity(category);
 		Page<PostEntity> page = postRepository.findAllByCategoryEntity(categoryEntity, pageRequest);
 		
 		List<PostEntity> postEntities = page.getContent();
