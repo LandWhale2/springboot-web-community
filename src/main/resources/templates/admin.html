@@ -8,7 +8,10 @@
 </head>
 <body>
 <div class="sidebar">
-
+    <h1>카테고리</h1>
+    <form th:action="@{/admin/category}">
+        <input type="text" th:name="name" placeholder="이름" required>
+    </form>
 </div>
 </body>
 </html>
