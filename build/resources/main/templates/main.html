@@ -18,7 +18,11 @@
                     <input type="text" placeholder="Search" name="search"></form>
             </div>
             <div class="top-bar-right"><a href="#Alarm" class="Alarm"><i class="far fa-bell"></i></a>
-                <a th:href="@{/signin}" class="SignIn">
+<<<<<<< HEAD
+                <a th:href="@{/signin}" class="SignIn  ">
+=======
+                <a th:href="@{/user/login}" class="SignIn">
+>>>>>>> master
                     SignIn
                 </a>
                 <a th:href="@{/signup}" class="SignUp">
@@ -33,7 +37,7 @@
                 <li data-id="con1" class="on">Home</li>
             </a>
             <a th:href="@{#con2}">
-                <li data-id="con2">자유게시판</li>
+                <li data-id="con2">자유</li>
             </a>
             <a th:href="@{#con3}">
                 <li data-id="con3">팁</li>
@@ -68,7 +72,7 @@
                     </table>
                 </div>
                 <div>
-                    <h1>팁</h1>
+                    <h1>팁 게시판</h1>
                     <table class="table-1">
                         <tr th:each="board : ${boardList}">
                             <td th:text="${board.title}" class="table-1-title"></td>
@@ -90,7 +94,7 @@
             </div>
         </div>
         <div id="con2" class="conBox">
-            <h1 class="title">자유게시판</h1>
+            <h1 class="title">자유 게시판</h1>
             <table class="board">
                 <thead>
                 <tr>
@@ -127,7 +131,7 @@
             </div>
         </div>
         <div id="con3" class="conBox">
-            <h1 class="title">팁</h1>
+            <h1 class="title">팁 게시판</h1>
             <table class="board">
                 <thead>
                 <tr>
@@ -164,7 +168,7 @@
             </div>
         </div>
         <div id="con4" class="conBox">
-            <h1 class="title">추천</h1>
+            <h1 class="title">추천 게시판</h1>
             <table class="board">
                 <thead>
                 <tr>
@@ -201,7 +205,7 @@
             </div>
         </div>
         <div id="con5" class="conBox">
-            <h1 class="title">고민</h1>
+            <h1 class="title">고민 게시판</h1>
             <table class="board">
                 <thead>
                 <tr>

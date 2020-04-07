@@ -1,8 +1,17 @@
+<<<<<<< HEAD
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+
+=======
 * {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
 }
+>>>>>>> master
 #wrapper {
     width: 100%;
     font-size: 17px;
@@ -92,7 +101,29 @@ header {
     text-decoration: none;
     font-size: 20px;
     border: #0e51ff thin solid;
+<<<<<<< HEAD
+    border-radius: 15px;
+}
+
+.tab {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.tab .conBox {
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    background: white;
+    display: none;
+    text-align: center;
+}
+
+.tab .conBox.on {
+    display: block;
+=======
     border-radius: 1rem;
+>>>>>>> master
 }
 
 .tab a {
@@ -119,8 +150,13 @@ header {
     display: inline-block;
     margin: 0;
     width: 19%;
+<<<<<<< HEAD
+    height: 30px;
+    padding: 25px 0 5px 0;
+=======
     height: 25px;
     padding: 25px 0 10px 0;
+>>>>>>> master
     text-align: center;
     cursor: pointer;
     border-bottom: thin solid gray;
@@ -143,14 +179,19 @@ header {
     display: block;
 }
 
+<<<<<<< HEAD
+=======
 
 .table-1 tr td {
     color: black;
 }
+>>>>>>> master
 
 .container {
     display: grid;
+    justify-content: center;
     grid-template-columns: auto auto;
+    align-content: center;
 }
 
 .container div {
@@ -160,6 +201,11 @@ header {
     height: 500px;
     border: thin solid black;
     box-shadow: 10px 10px 10px gray;
+
+}
+
+.table-1 tr td {
+    color: black;
 }
 
 table.table-1 td {
