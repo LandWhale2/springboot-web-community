@@ -56,13 +56,13 @@ public class PostEntity extends TimeEntity{
     @ManyToOne
     @JoinColumn(name="category_id")
     private CategoryEntity categoryEntity;
-//    
-//    @OneToMany(mappedBy="postEntity", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
-//    private List<CommentEntity> comment = new ArrayList<>();
-//    
-//    
-//    @OneToMany(mappedBy="postEntity", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
-//    private List<PostlikeEntity> postlike = new ArrayList<>();
+    
+    @OneToMany(mappedBy="postEntity", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<CommentEntity> comment = new ArrayList<>();
+    
+    
+    @OneToMany(mappedBy="postEntity", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PostlikeEntity> postlike = new ArrayList<>();
     
     
     
@@ -94,13 +94,13 @@ public class PostEntity extends TimeEntity{
 	//Builder 패턴 클래시를 생성해주는 annotation, @Setter 사용대신 빌더패턴을 사용해야  안정성을 보장가능
 	
     @Builder
-    public PostEntity(Long id, String title, String writer, String content, CategoryEntity categoryEntity,  int hit) {
+    public PostEntity(Long id, String title, String writer, String content, CategoryEntity categoryEntity,  List<CommentEntity> comment,int hit) {
         this.id = id;
         this.writer = writer;
         this.title = title;
         this.content = content;
         this.categoryEntity = categoryEntity;
-//        this.comment = comment;
+        this.comment = comment;
 //        this.setPostEntityAndCategoryEntity(categoryEntity);
         this.hit = hit;
         
