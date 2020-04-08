@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 페이지</title>
+</head>
+<body>
+    <h1>로그인</h1>
+    <hr>
+
+    <form th:action="@{/user/login}" method="post">
+        
+
+        <input type="text" name="username" placeholder="이메일 입력해주세요">
+        <input type="password" name="password" placeholder="비밀번호">
+        <button type="submit">로그인</button>
+    </form>
+    <br>
+    
+    <a href="javascript:;" class="btn_social" data-social="facebook">페이스북 로그인</a><br/>
+    
+    <script>
+        let socials = document.getElementsByClassName("btn_social");
+        for(let social of socials) {
+            social.addEventListener('click', function(){
+                let socialType = this.getAttribute('data-social');
+                location.href="/oauth2/authorization/" + socialType;
+            })
+        }
+    </script>
+</body>
+</html>

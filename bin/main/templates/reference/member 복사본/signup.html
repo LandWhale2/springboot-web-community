@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 페이지</title>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+	<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+<body>
+    <h1>회원 가입</h1>
+    <hr>
+
+    <form th:action="@{/user/signup}" method="post" modelAttribute="memberDto">
+    	<input type="hidden" name="emailcheck" value=false>
+        <div>
+            <input type="text" name="email" th:value="${memberDto.email}" placeholder="이메일을 입력해주세요.">
+            <input type="button" id="emailBtn" value="이메일 중복 확인" >
+            <span th:text="${valid_email}"></span>
+            <span th:text="${valid_emailcheck}"></span>
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="비밀번호">
+            <span th:text="${valid_password}"></span>
+        </div>
+        <div>
+            <input type="text" name="nickname" th:value="${memberDto.nickname}" placeholder="닉네임을 입력해주세요.">
+        </div>
+        <label><input type="checkbox" checked="checked" name="terms"> 개인정보 및 약관 동의</label>
+        <p>By creating an account you agree to our <a href="#agree" style="color: dodgerblue"> Terms & Privacy</a></p>
+        <span th:text="${valid_terms}"></span>
+        <button type="submit">가입하기</button>
+    </form>
+    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    	var token = $("meta[name='_csrf']").attr("content");
+    	var header = $("meta[name='_csrf_header']").attr("content");
+    	$("#emailBtn").click(function(){
+    		var email = $("input[name=email]").val();
+    		emailCheck(email);
+    	});
+    	
+    	
+    	function emailCheck(email){
+    		$.ajax({
+    	          url : '/checkemail/'+ email,
+    	          type : 'get',
+    	          data : {
+    	        	  'email': email
+    	          },
+    	          beforeSend : function(xhr){
+    	        	  xhr.setRequestHeader(header, token);
+    	          },
+    	          success : function(data){
+    	        	  alert("이미 가입된 이메일 입니다.");
+    	        	  $("input[name=emailcheck]").val(false);
+    	        	  
+    	          },
+    	          error: function(error) {
+    	        	  alert("사용 가능한 이메일 입니다.");
+    	        	  $("input[name=emailcheck]").val(true);
+
+    	          }
+    	      });
+    	}
+    </script>
+</body>
+</html>
