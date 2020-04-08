@@ -20,6 +20,7 @@ public class AdminController {
 	
 	@PostMapping("/admin/category")
 	public String category() {
+		System.out.println("asds");
 		return "redirect:/admin";
 	}
 	

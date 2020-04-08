@@ -83,7 +83,7 @@ public class MemberService implements UserDetailsService {
         		userEntity.getNickname());
         
         
-        System.out.println(user);
+        
         
         
         return user;
@@ -110,5 +110,25 @@ public class MemberService implements UserDetailsService {
     	return user.getUser_name();
     }
 	
+	
+public MemberEntity getMemberEntitybyUserName(String username) {
+    	
+    	Optional<MemberEntity> memberEntityWrapper = memberRepository.findByNickname(username);
+    	
+    	MemberEntity memberEntity = memberEntityWrapper.get();
+    	
+    	return memberEntity;
+    }
+    
+    
+    
+    
+    public MemberEntity getMemberEntity() {
+    	String username = MemberService.currentUserNickname();
+    	MemberEntity memberEntity = this.getMemberEntitybyUserName(username);
+    	
+    	
+    	return memberEntity;
+    }
 	
 }
