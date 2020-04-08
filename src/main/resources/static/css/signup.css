@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
 header {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;

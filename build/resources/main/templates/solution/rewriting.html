@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+<body>
+
+
+<h2 th:text="${boardDto.title}"></h2>
+<p th:inline="text">작성일 : [[${#temporals.format(boardDto.createdDate, 'yyyy-MM-dd HH:mm')}]]</p>
+
+<p th:text="${boardDto.content}"></p>
+
+
+<!-- 수정/삭제 -->
+<div>
+    <a th:href="@{'/post/edit/' + ${boardDto.id}}">
+        <button>수정</button>
+    </a>
+
+    <form id="delete-form" th:action="@{'/post/' + ${boardDto.id}}" method="post">
+        <input type="hidden" name="_method" value="delete"/>
+        <button id="delete-btn">삭제</button>
+    </form>
+
+    <span class="like-group-btn">
+		<button class="btn btn-default" type="button" name="likeBtn">추천</button>
+	</span>
+    <div class="container">
+        <div class="likecount"></div>
+    </div>
+
+
+</div>
+
+<div class="container">
+    <label for="content">comment</label>
+    <form name="commentInsertFrom">
+        <div class="input-group">
+            <input type="hidden" name="bno" value=${boardDto.id}/>
+            <input type="text" class="form-control" id="content" placeholder="내용을 입력하세요.">
+            <span class="input-group-btn">
+				<button class="btn btn-default" type="button" name="commentInsertBtn">등록</button>
+			</span>
+
+        </div>
+    </form>
+</div>
+
+<div class="container">
+    <div class="commentList"></div>
+</div>
+
+
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    var bno = [[${boardDto.id}]];
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
+
+    $('[name=commentInsertBtn]').click(function(){
+        /* var insertData = $('form[name=commentInsertForm]').serialize(); */
+        var content = $('#content').val();
+
+        commentInsert(content);
+    });
+
+    //댓글 목록
+    function commentList(){
+        $.ajax({
+            url : '/comment/list/' + bno,
+            type : 'get',
+            data : {'bno':bno},
+            success : function(data){
+                var a ='';
+                $.each(data, function(key, value){
+                    a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
+                    a += '<div class="commentInfo'+value.id+'">'+'댓글번호 : '+value.id+' / 작성자 : '+value.writer;
+                    a += '<a onclick="commentUpdate('+value.id+',\''+value.content+'\');"><p>수정</p> </a>';
+                    a += '<a onclick="commentDelete('+value.id+');"> 삭제 </a> </div>';
+                    a += '<div class="commentContent'+value.id+'"> <p> 내용 : '+value.content +'</p>';
+                    a += '</div></div>';
+                });
+
+                $(".commentList").html(a);
+            }
+        });
+    }
+
+    //댓글 등록
+    function commentInsert(content){
+        $.ajax({
+            url : '/comment/insert',
+            type : 'post',
+            data : {
+                'bno': bno,
+                'content': content
+            },
+            beforeSend : function(xhr){
+                xhr.setRequestHeader(header, token);
+            },
+            success : function(data){
+                commentList(); //댓글 작성 후 댓글 목록 reload
+                $('#content').val('');
+            }
+        });
+    }
+
+    //댓글 수정 - 댓글 내용 출력을 input 폼으로 변경
+    function commentUpdate(cno, content){
+        var a ='';
+
+        a += '<div class="input-group">';
+        a += '<input type="text" class="form-control" name="content_'+cno+'" value="'+content+'"/>';
+        a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateProc('+cno+');">수정</button> </span>';
+        a += '</div>';
+
+        $('.commentContent'+cno).html(a);
+
+    }
+
+    //댓글 수정
+    function commentUpdateProc(cno){
+        var updateContent = $('[name=content_'+cno+']').val();
+
+        $.ajax({
+            url : '/comment/update',
+            type : 'post',
+            data : {'content' : updateContent, 'cno' : cno},
+            beforeSend : function(xhr){
+                xhr.setRequestHeader(header, token);
+            },
+            success : function(data){
+                commentList(bno);//댓글 수정후 목록 출력
+            }
+        });
+    }
+
+    //댓글 삭제
+    function commentDelete(cno){
+        $.ajax({
+            url : '/comment/delete/'+cno,
+            type : 'post',
+            beforeSend : function(xhr){
+                xhr.setRequestHeader(header, token);
+            },
+            success : function(data){
+                commentList(bno); //댓글 삭제후 목록 출력
+            }
+        });
+    }
+
+    $(document).ready(function(){
+        commentList(); //페이지 로딩시 댓글 목록 출력
+        likecount();
+    });
+
+
+
+
+    //좋아요
+    $('[name=likeBtn]').click(function(){
+
+
+        likeinsert();
+
+    });
+
+    //좋아요 전송
+    function likeinsert(){
+        $.ajax({
+            url : '/like/save',
+            type : 'post',
+            data : {
+                'bno': bno,
+            },
+            beforeSend : function(xhr){
+                xhr.setRequestHeader(header, token);
+            },
+            success : function(data){
+                likecount();
+            }
+        });
+    }
+
+    function likecount(){
+        $.ajax({
+            url : '/like/count/' + bno,
+            type : 'get',
+            success : function(data){
+
+                var a = '';
+                a += '<div>'+ data +'</div>'
+                $(".likecount").html(a);
+            }
+        });
+    }
+
+</script>
+
+
+
+
+
+<!-- 변수 셋팅 -->
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var boardDto = /*[[${boardDto}]]*/ "";
+    /*]]>*/
+</script>
+
+<!-- script -->
+
+
+
+</body>
+</html>

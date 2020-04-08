@@ -1,4 +1,9 @@
 @charset "UTF-8";
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
 header {
     margin: 0;
@@ -121,13 +126,14 @@ input[type=submit]:hover {
     width: 50%;
     margin: auto;
     padding: 0 50px;
-    margin-top: 6px;
     position: relative;
     text-align: center;
 }
+
 .row {
     display: flex;
 }
+
 .social {
     width: 50%;
     margin: auto 0;
@@ -151,6 +157,7 @@ input[type=submit]:hover {
 .social-btn span {
     margin: 0 40px;
 }
+
 .social-btn img {
     margin-bottom: 20px;
     position: absolute;
@@ -174,7 +181,6 @@ input[type=submit]:hover {
 .col span {
     margin: 0 40px;
 }
-
 
 
 form {
