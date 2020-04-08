@@ -76,7 +76,7 @@ public class BoardController {
 	}
 	
 	//게시물 디테일
-	@GetMapping("/{category}/{no}")
+	@GetMapping("/{category}/detail/{no}")
     public String detail(@PathVariable("no") Long no, Model model) {
     	PostDto postDTO = postService.getPostDto(no);
     	postService.addhit(no);
@@ -103,7 +103,7 @@ public class BoardController {
     }
 	
 	//게시물 삭제
-	@PostMapping("/{category}/{no}")
+	@PostMapping("/{category}/detail/{no}")
     public String delete(@PathVariable("no") Long no) {
         postService.deletePost(no);
 
