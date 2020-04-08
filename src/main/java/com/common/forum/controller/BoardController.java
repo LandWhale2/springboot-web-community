@@ -102,6 +102,7 @@ public class BoardController {
         return "redirect:/";
     }
 	
+	
 	//게시물 삭제
 	@PostMapping("/{category}/detail/{no}")
     public String delete(@PathVariable("no") Long no) {
@@ -109,6 +110,7 @@ public class BoardController {
 
         return "redirect:/";
     }
+	
 	
 	//게시물 검색
 	@GetMapping("/board/search")

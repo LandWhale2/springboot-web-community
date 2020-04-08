@@ -3,6 +3,8 @@ package com.common.forum.dto;
 
 import lombok.*;
 import java.time.LocalDateTime;
+
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -29,6 +31,14 @@ public class MemberDto {
 	
 	@NotBlank(message = "닉네임은 필수 입력 값입니다.")
 	private String nickname;
+	
+	
+	@AssertTrue(message = "약관에 동의를 체크해주십시요.")
+	private boolean terms;
+	
+	
+	@AssertTrue(message = "이메일 중복 체크를 해주십시오.")
+	private boolean emailcheck;
 	
 	private String authkey;
     private boolean isactive;
