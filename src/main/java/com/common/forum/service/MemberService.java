@@ -111,7 +111,7 @@ public class MemberService implements UserDetailsService {
     }
 	
 	
-public MemberEntity getMemberEntitybyUserName(String username) {
+	public MemberEntity getMemberEntitybyUserName(String username) {
     	
     	Optional<MemberEntity> memberEntityWrapper = memberRepository.findByNickname(username);
     	
@@ -131,4 +131,9 @@ public MemberEntity getMemberEntitybyUserName(String username) {
     	return memberEntity;
     }
 	
+    @Transactional
+    public String checkEmail(String email) {
+    	Optional<MemberEntity> memberEntityWrapper = memberRepository.findByEmail(email);
+    	return memberEntityWrapper.get().getEmail();
+    }
 }
