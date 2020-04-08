@@ -112,4 +112,11 @@ public class MemberController {
     public String loginSuccess() {
     	return "main";
     }
+    
+    
+    @RequestMapping("/checkemail/{email}")
+    @ResponseBody
+    public String checkemail(@PathVariable String email) throws Exception{
+    	return memberService.checkEmail(email);
+    }
 }
