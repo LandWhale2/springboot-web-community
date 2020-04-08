@@ -1,5 +1,6 @@
 @charset "UTF-8";
 * {
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -7,7 +8,6 @@
 #wrapper {
     width: 100%;
     font-size: 17px;
-
 }
 
 header {
@@ -97,7 +97,7 @@ header {
 }
 
 .tab {
-    font-family: Arial, Helvetica, sans-serif;
+
     text-align: center;
 }
 
@@ -112,8 +112,7 @@ header {
 
 .tab .conBox.on {
     display: block;
-= = = = = = = border-radius: 1 rem;
->>> >>> > master
+    border-radius: 1rem;
 }
 
 .tab a {
@@ -168,7 +167,6 @@ header {
     color: black;
 }
 
->>> >>> > master
 .container {
     display: grid;
     justify-content: center;
@@ -183,7 +181,6 @@ header {
     height: 500px;
     border: thin solid black;
     box-shadow: 10px 10px 10px gray;
-
 }
 
 .table-1 tr td {
@@ -272,7 +269,7 @@ table.table-1 td {
     font-size: 20px;
     border: #0e51ff thin solid;
     border-radius: 15px;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 .conBox .page-control .list-num a {
