@@ -217,12 +217,35 @@ table.table-1 td {
 }
 
 .board th {
-    width: 30px;
-    padding: 10px;
+    padding: 10px 0;
     vertical-align: top;
     text-align: center;
     color: black;
     border-bottom: 1px solid black;
+}
+
+.board-num {
+    width: 10%;
+}
+
+.board-title {
+    width: 55%;
+}
+
+.board-writer {
+    width: 10%;
+}
+
+.board-date {
+    width: 15%;
+}
+
+.board-hits {
+    width: 5%;
+}
+
+.board-comment {
+    width: 5%;
 }
 
 .board tbody tr {
@@ -230,7 +253,7 @@ table.table-1 td {
 }
 
 .board td {
-    padding: 10px;
+    padding: 10px 0;
     vertical-align: top;
     border-bottom: 1px solid gray;
 }
