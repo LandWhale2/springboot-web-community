@@ -188,7 +188,7 @@ public class PostService {
 		
 		// 총 게시글 수
 		Double postsTotalCount = Double.valueOf(this.getPostCount(category));
-		
+		System.out.println(postsTotalCount);
 		// 총 게시글 기준으로 계산한 마지막 페이지 번호 계산
 		Integer totalLastPageNum = (int)(Math.ceil((postsTotalCount/PAGE_POST_COUNT)));
 		
@@ -204,6 +204,10 @@ public class PostService {
 		for (int val = curPageNum, idx = 0; val <= blockLastPageNum; val++, idx++) {
             pageList[idx] = val;
         }
+		
+		if (pageList[0] == null) {
+			pageList = null;
+		}
 		
 		return pageList;
 		

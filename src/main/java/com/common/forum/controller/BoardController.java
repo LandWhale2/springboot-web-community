@@ -46,11 +46,10 @@ public class BoardController {
 		
 		
 		model.addAttribute("categoryList", categoryList);
-		model.addAttribute("category", category);
 		model.addAttribute("boardList", postList);
 		model.addAttribute("pageList", pageList);
 		
-		return "";
+		return "main";
 	}
 
 	
