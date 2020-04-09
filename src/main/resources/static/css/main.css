@@ -225,16 +225,8 @@ table.table-1 td {
     border-bottom: 1px solid black;
 }
 
-.board .blue {
-    width: 10px;
-}
-
 .board tbody tr {
     text-align: center;
-}
-
-.board tbody .board-head {
-    width: 10px;
 }
 
 .board td {
@@ -243,22 +235,18 @@ table.table-1 td {
     border-bottom: 1px solid gray;
 }
 
-.title {
-    text-align: left;
-    margin: 10px 60px;
-}
 
-.conBox .page-control {
+.page-control {
     text-align: center;
     margin-top: 40px;
 }
 
-.conBox .page-control .list-num {
+.page-control .list-num {
     margin-left: 200px;
     color: black;
 }
 
-.conBox .page-control .list-num .writing {
+.page-control .writing {
     float: right;
     color: white;
     background: #0e51ff;

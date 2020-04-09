@@ -1,0 +1,29 @@
+<div class="top-bar">
+    <a href="#HomePage" class="logo">커뮤니티3</a>
+    <div class="search-container">
+        <form action="/board/search" method="GET">
+            <button type="submit"><i class="fa fa-search"></i></button>
+            <input type="text" placeholder="검색어를 입력해주세요" name="keyword"></form>
+    </div>
+    <div class="top-bar-right"><a href="#Alarm" class="Alarm"><i class="far fa-bell"></i></a>
+
+        <a sec:authorize="isAnonymous()" th:href="@{/user/login}" class="SignIn">
+            SignIn
+        </a>
+        <a sec:authorize="isAnonymous()" th:href="@{/signup}" class="SignUp">
+            SignUp
+        </a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}" class="signIn">
+            로그아웃
+        </a>
+        <a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/user/info}" class="signIn">
+            내정보
+        </a>
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}" class="signIn">
+            어드민
+        </a>
+        <a th:href="@{/post}" class="signUp">
+            글쓰기
+        </a>
+    </div>
+</div>

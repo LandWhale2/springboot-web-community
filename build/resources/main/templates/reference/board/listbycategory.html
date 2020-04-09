@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-
-    <link rel="stylesheet" th:href="@{/css/board.css}">
+<meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
-    <!-- HEADER -->
+
+	<!-- HEADER -->
     <div th:insert="common/header.html" id="header"></div>
-    
-    
-    
-    
-    <p>
-    
-    <a th:href="@{/category}">카테고리 추가</a>
+
+	
+	<a th:href="@{/category}">카테고리 추가</a>
     
     <dl th:each="category : ${categoryList}">
-    	<a th:href="@{'/' + ${category.id}}">
+    	<a th:href="@{'/' + ${category.name}}">
     		<span th:text="${category.name}"></span>
     	</a>
     </dl>
@@ -65,23 +60,13 @@
     
     <div>
     	<span th:each="pageNum : ${pageList}" th:inline="text">
-    		<a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a>
+    		<a th:href="@{${category.id} + '?page=' + ${pageNum}}">[[${pageNum}]]</a>
     	</span>
     </div>
     
     
     
-    <form action="/board/search" method="GET">
-    	<div>
-    		<input name="keyword" type="text" placeholder="검색어를 입력해주세요">
-    	</div>
-    	
-    	<button>검색하기</button>
-    </form>
-
-    <!-- FOOTER -->
+    
     <div th:insert="common/footer.html" id="footer"></div>
-    
-    
 </body>
 </html>

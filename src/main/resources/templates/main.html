@@ -1,70 +1,71 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <meta charset="UTF-8" http-equiv="Content-Type" content="text/html">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
-<body>
-
-<!-- HEADER -->
-<div th:insert="common/header.html" id="header"></div>
-
-
-<a th:href="@{/category}">카테고리 추가</a>
-
-<dl th:each="category : ${categoryList}">
-    <a th:href="@{'/' + ${category.id}}">
-        <span th:text="${category.name}"></span>
-    </a>
-</dl>
-
-
-<table>
-    <thead>
-    <tr>
-        <th class="one wide">번호</th>
-        <th class="ten wide">글제목</th>
-        <th class="two wide">작성자</th>
-        <th class="three wide">작성일</th>
-        <th class="four wide">조회수</th>
-        <th class="four wide">댓글수</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <!-- CONTENTS !-->
-    <tr th:each="board : ${boardList}">
-        <td>
-            <span th:text="${board.id}"></span>
-        </td>
-        <td>
-            <a th:href="@{'/post/' + ${board.id}}">
-                <span th:text="${board.title}"></span>
+<div id="wrapper">
+    <div th:insert="header.html" id="header"></div>
+    <div class="tab">
+        <ul th:each="category : ${categoryList}">
+            <a th:href="@{'/' + ${category.name}}">
+                <li th:text="${category.name}"></li>
             </a>
-        </td>
-        <td>
-            <span th:text="${board.writer}"></span>
-        </td>
-        <td>
-            <span th:text="${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
-        </td>
-        <td>
-            <span th:text="${board.hit}"></span>
-        </td>
-        <td>
-            <span th:text="${board.commentcount}"></span>
-        </td>
-    </tr>
-    </tbody>
-</table>
+        </ul>
+    </div>
 
-<div>
-    	<span th:each="pageNum : ${pageList}" th:inline="text">
-    		<a th:href="@{${category.id} + '?page=' + ${pageNum}}">[[${pageNum}]]</a>
+    <table class="board">
+        <thead>
+        <tr>
+            <th class="board-num">번호</th>
+            <th class="board-title">글제목</th>
+            <th class="board-writer">작성자</th>
+            <th class="board-date">작성일</th>
+            <th class="board-hits">조회수</th>
+            <th class="board-comment">댓글수</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="board : ${boardList}">
+            <td>
+                <span th:text="${board.id}"></span>
+            </td>
+            <td>
+                <a th:href="@{'/post/' + ${board.id}}">
+                    <span th:text="${board.title}"></span>
+                </a>
+            </td>
+            <td>
+                <span th:text="${board.writer}"></span>
+            </td>
+            <td>
+                <span th:text="${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
+            </td>
+            <td>
+                <span th:text="${board.hit}"></span>
+            </td>
+            <td>
+                <span th:text="${board.commentcount}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="page-control">
+        <div class="list-num">
+            <span th:each="pageNum : ${pageList}" th:inline="text">
+    		<a th:href="@{${category.id} + '?page=' + ${pageNum}}" class="pageindex">[[${pageNum}]]</a>
     	</span>
+        </div>
+        <a th:href="@{/writing}" class="writing">
+            글쓰기
+        </a>
+    </div>
 </div>
 
 
-<div th:insert="common/footer.html" id="footer"></div>
-</body>
 </html>

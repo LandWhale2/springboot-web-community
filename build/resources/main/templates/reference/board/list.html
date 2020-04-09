@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Insert title here</title>
-</head>
+<meta charset="UTF-8" http-equiv="Content-Type" content="text/html">
+<link rel="stylesheet" th:href="@{/css/main.css}">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <body>
-
 <!-- HEADER -->
 <div th:insert="common/header.html" id="header"></div>
 
 
-<a th:href="@{/category}">카테고리 추가</a>
+<p>
+
+    <a th:href="@{/category}">카테고리 추가</a>
 
 <dl th:each="category : ${categoryList}">
     <a th:href="@{'/' + ${category.id}}">
@@ -60,11 +63,22 @@
 
 <div>
     	<span th:each="pageNum : ${pageList}" th:inline="text">
-    		<a th:href="@{${category.id} + '?page=' + ${pageNum}}">[[${pageNum}]]</a>
+    		<a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a>
     	</span>
 </div>
 
 
+<form action="/board/search" method="GET">
+    <div>
+        <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
+    </div>
+
+    <button>검색하기</button>
+</form>
+
+<!-- FOOTER -->
 <div th:insert="common/footer.html" id="footer"></div>
+
+
 </body>
 </html>
