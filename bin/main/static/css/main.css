@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 * {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
@@ -216,48 +217,59 @@ table.table-1 td {
 }
 
 .board th {
-    width: 30px;
-    padding: 10px;
+    padding: 10px 0;
     vertical-align: top;
     text-align: center;
     color: black;
     border-bottom: 1px solid black;
 }
 
-.board .blue {
-    width: 10px;
+.board-num {
+    width: 10%;
+}
+
+.board-title {
+    width: 55%;
+}
+
+.board-writer {
+    width: 10%;
+}
+
+.board-date {
+    width: 15%;
+}
+
+.board-hits {
+    width: 5%;
+}
+
+.board-comment {
+    width: 5%;
 }
 
 .board tbody tr {
     text-align: center;
 }
 
-.board tbody .board-head {
-    width: 10px;
-}
-
 .board td {
-    padding: 10px;
+    padding: 10px 0;
     vertical-align: top;
     border-bottom: 1px solid gray;
 }
 
-.title {
-    text-align: left;
-    margin: 10px 60px;
-}
 
-.conBox .page-control {
+.page-control {
     text-align: center;
     margin-top: 40px;
 }
 
-.conBox .page-control .list-num {
+.page-control .list-num {
     margin-left: 200px;
     color: black;
 }
 
-.conBox .page-control .list-num .writing {
+.page-control .writing {
     float: right;
     color: white;
     background: #0e51ff;
@@ -275,7 +287,7 @@ table.table-1 td {
 .conBox .page-control .list-num a {
     margin-left: 10px;
     color: black;
-    padding: 0px 10px;
+    padding: 0 10px;
     text-decoration: none;
 }
 

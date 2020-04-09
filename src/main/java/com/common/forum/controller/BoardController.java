@@ -26,8 +26,10 @@ public class BoardController {
 	
 	
 	@GetMapping("/")
-    public String test() {
+    public String test(Model model) {
+		List<CategoryDto> categoryList = categoryService.getCategoryList();
 		
+		model.addAttribute("categoryList", categoryList);
         return "main";
     }
 	
@@ -40,10 +42,10 @@ public class BoardController {
 		
 		List<PostDto> postList = postService.getPostListByCategoryid(category, pageNum);
 		Integer[] pageList = postService.getPageList(pageNum, category);
-		CategoryDto categoryDto = categoryService.getcategoryDto(category);
+		List<CategoryDto> categoryList = categoryService.getCategoryList();
 		
 		
-		
+		model.addAttribute("categoryList", categoryList);
 		model.addAttribute("category", category);
 		model.addAttribute("boardList", postList);
 		model.addAttribute("pageList", pageList);
