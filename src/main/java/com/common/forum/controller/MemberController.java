@@ -60,7 +60,7 @@ public class MemberController {
         
 
 
-        return "redirect:/";
+        return "redirect:/user/signup/result";
     }
 	
 	@RequestMapping(value = "/emailConfirm", method = RequestMethod.GET)
@@ -75,9 +75,14 @@ public class MemberController {
         mailService.authMember(authkey);
         
         
-        return "main";
+        return "authOk";
     }
 	
+	
+	@GetMapping("/user/signup/result")
+    public String signResult() {
+        return "authorizing";
+    }
 	
 	
 
