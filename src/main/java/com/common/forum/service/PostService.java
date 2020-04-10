@@ -84,13 +84,20 @@ public class PostService {
     }
 	
 	@Transactional
-	public Long updatePost(PostDto postDto) {
-		PostEntity postEntity = this.getPostEntity(postDto.getId());
-		PostDto postDTO = this.convertEntityToDto(postEntity);
-		postDTO.setTitle(postDto.getTitle());
-		postDTO.setContent(postDto.getContent());
-		postDto.setCategoryEntity(postDTO.getCategoryEntity());
-		return postRepository.save(postDto.toEntity()).getId();
+	public void updatePost(PostDto postDto) {
+		if (this.postauth(postDto.getId())) {
+			PostEntity postEntity = this.getPostEntity(postDto.getId());
+			PostDto postDTO = this.convertEntityToDto(postEntity);
+			postDTO.setTitle(postDTO.getTitle());
+			postDTO.setContent(postDTO.getContent());
+			postDto.setCategoryEntity(postDTO.getCategoryEntity());
+			postDto.setMemberEntity(postDTO.getMemberEntity());
+			
+			
+			postRepository.save(postDTO.toEntity());
+		}
+		
+		
 	}
 	
 	

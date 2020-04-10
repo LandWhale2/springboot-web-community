@@ -91,14 +91,15 @@ public class BoardController {
     	PostDto postDTO = postService.getPostDto(no);
     	
     	model.addAttribute("boardDto", postDTO);
-    	return "board/update.html";
+    	return "update";
     }
 	
 	@PostMapping("/{category}/edit/{no}")
     public String update(PostDto boardDTO) {
+		
         postService.updatePost(boardDTO);
 
-        return "";
+        return "redirect:/";
     }
 	
 	
