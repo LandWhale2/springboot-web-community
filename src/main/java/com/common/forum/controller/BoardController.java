@@ -86,7 +86,7 @@ public class BoardController {
     	postService.addhit(no);
     	
     	model.addAttribute("boardDto", postDTO);
-    	return "board/detail.html";
+    	return "contentview";
     }
 	
 	

@@ -10,19 +10,19 @@
 <body>
 <div class="container">
     <div class="title-container">
-        <div class="content-title" th:text="글제목"></div>
+        <div class="content-title" th:text="${boardDto.title}"></div>
         <br>
-        <div class="content-info"><span class="content-nick" th:text="닉네임"></span><span
-                class="content-time" th:text="날짜+''+및+''+시간"></span>
+        <div class="content-info"><span class="content-nick" th:text="${boardDto.writer}"></span>
+        <span class="content-time" th:inline="text">작성일 : [[${#temporals.format(boardDto.createdDate, 'yyyy-MM-dd HH:mm')}]]</span>
         </div>
-        <div class="content-data"><span class="content-view" th:text="조회+ '  |  ' + 20"></span><span
+        <div class="content-data"><span class="content-view" th:text="'조회수 | ' + ${boardDto.hit}"></span><span
                 class="content-recom"
                 th:text="추천+ '  |  ' + 20"
         ></span><span
                 class="content-com" th:text="댓글+ '  |  ' + 2"></span></div>
     </div>
     <div class="content-zone"><img th:src="@{/assets/google_logo.png}" style="width: 300px; height: 300px;">
-        <p th:text="글내용"></p></div>
+        <p th:text="${boardDto.content}"></p></div>
 
 
     <div class="container-social">
