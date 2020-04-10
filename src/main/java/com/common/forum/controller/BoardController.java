@@ -29,8 +29,10 @@ public class BoardController {
     public String test(Model model) {
 		List<CategoryDto> categoryList = categoryService.getCategoryList();
 		
+		
+		
 		model.addAttribute("categoryList", categoryList);
-        return "main";
+        return "home";
     }
 	
 	
@@ -43,8 +45,9 @@ public class BoardController {
 		List<PostDto> postList = postService.getPostListByCategoryid(category, pageNum);
 		Integer[] pageList = postService.getPageList(pageNum, category);
 		List<CategoryDto> categoryList = categoryService.getCategoryList();
+		CategoryDto categoryDto = categoryService.getcategoryDto(category);
 		
-		
+		model.addAttribute("category", categoryDto);
 		model.addAttribute("categoryList", categoryList);
 		model.addAttribute("boardList", postList);
 		model.addAttribute("pageList", pageList);
@@ -62,9 +65,9 @@ public class BoardController {
 	
 	//  게시물 쓰기
     
-	@PostMapping("/{category}/writing")
+	@PostMapping("/writing")
 	public String write(PostDto postDto) {
-  	
+		System.out.println(postDto);
 		//로그인중인 닉네임
 		String writer = MemberService.currentUserNickname();
 		postDto.setWriter(writer);
