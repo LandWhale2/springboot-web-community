@@ -28,6 +28,7 @@ public class HomeService {
 		List<PostEntity> postEntities = postRepository.findTop10ByCategoryEntity(categoryEntity);
 		List<PostDto> postDtoList = new ArrayList<>();
 		
+		
 		for (PostEntity postEntity : postEntities) {
 			PostDto postDto = postService.convertEntityToDtowithoutCategoryEntity(postEntity);
 			postDtoList.add(postDto);

@@ -73,11 +73,11 @@ public class BoardController {
 	
 	//게시물 디테일
 	@GetMapping("/{category}/detail/{no}")
-    public String detail(@PathVariable("no") Long no, Model model) {
+    public String detail(@PathVariable("no") Long no, Model model, @PathVariable("category") String category) {
     	PostDto postDTO = postService.getPostDto(no);
     	postService.addhit(no);
     	
-    	
+    	model.addAttribute("category", category);
     	model.addAttribute("boardDto", postDTO);
     	return "contentview";
     }
@@ -103,6 +103,7 @@ public class BoardController {
 	//게시물 삭제
 	@PostMapping("/{category}/detail/{no}")
     public String delete(@PathVariable("no") Long no) {
+		
         postService.deletePost(no);
 
         return "redirect:/";

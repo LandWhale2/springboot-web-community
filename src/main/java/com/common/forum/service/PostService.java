@@ -102,7 +102,7 @@ public class PostService {
 	
 	//중복되는 작업을 개선하기위한 함수,
 	@Transactional
-	private PostDto convertEntityToDto(PostEntity postEntity) {
+	public PostDto convertEntityToDto(PostEntity postEntity) {
 		return PostDto.builder()
 				.id(postEntity.getId())
 				.title(postEntity.getTitle())
