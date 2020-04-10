@@ -10,7 +10,7 @@
 </head>
 <header>
     <div class="top-bar">
-        <a href="signUp.html" class="logo">커뮤니티2</a>
+        <a href="signUp.html" class="logo">커뮤니티</a>
         <a href="signUp.html" class="signIn">회원가입</a>
     </div>
 </header>
@@ -18,16 +18,16 @@
 <form th:action="@{/user/signup}" class="container" method="post">
     <div class="form">
         <label for="email"><b>E-mail</b></label>
-        <input type="text" placeholder="E-mail 을 입력해주세요오오" name="email" th:value="${email}" required>
+        <input type="text" placeholder="E-mail 을 입력해주세요오오" name="email">
         <span th:text="valid_email"></span>
         <label for="psw"><b>비밀번호</b></label>
-        <input type="password" placeholder="비밀번호를 입력해주세요" name="password" th:value="${password}" required>
+        <input type="password" placeholder="비밀번호를 입력해주세요" name="password">
         <span th:text="valid_password"></span>
         <label for="psw-repeat"><b>비밀번호 확인</b></label>
-        <input type="password" placeholder="비밀번호를 다시 입력해주세요" name="password2" th:value="${password}" required>
+        <input type="password" placeholder="비밀번호를 다시 입력해주세요" name="password2">
         <span th:text="valid_password_repeat"></span>
         <label for="nickname"><b>닉네임</b></label>
-        <input type="text" placeholder="닉네임을 입력해주세요" name="nickname" th:value="${nickname}" required>
+        <input type="text" placeholder="닉네임을 입력해주세요" name="nickname">
         <span th:text="valid_nickname"></span>
         <label><input type="checkbox" checked="checked" name="remember"> 개인정보 및 약관 동의</label>
         <p>By creating an account you agree to our <a href="#agree" style="color: dodgerblue"> Terms & Privacy</a></p>

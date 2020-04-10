@@ -107,6 +107,7 @@ public class MemberService implements UserDetailsService {
     	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     	
     	CustomUserDetails user = (CustomUserDetails) authentication.getPrincipal();
+    	
     	return user.getUser_name();
     }
 	
@@ -126,7 +127,7 @@ public class MemberService implements UserDetailsService {
     public MemberEntity getMemberEntity() {
     	String username = MemberService.currentUserNickname();
     	MemberEntity memberEntity = this.getMemberEntitybyUserName(username);
-    	
+    	System.out.println(memberEntity);
     	
     	return memberEntity;
     }

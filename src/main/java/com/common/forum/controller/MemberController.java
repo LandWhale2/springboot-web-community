@@ -33,7 +33,7 @@ public class MemberController {
 	}
 	
 	
-	@GetMapping("/signup")
+	@GetMapping("/user/signup")
 	public String signup(MemberDto memberDto) {
 		return "signUp.html";
 	}

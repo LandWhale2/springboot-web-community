@@ -27,6 +27,7 @@ public class PostlikeService {
 	@Transactional
 	public PostlikeDto PostlikeDtoSet(Long bno) {
 		MemberEntity memberEntity = memberService.getMemberEntity();
+		System.out.println("asdsad");
 		PostEntity postEntity = postService.getPostEntity(bno);
 		PostlikeDto postlikeDto = new PostlikeDto();
 		postlikeDto.setMemberEntity(memberEntity);

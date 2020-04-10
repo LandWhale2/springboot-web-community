@@ -23,9 +23,9 @@ public class PostlikeController {
 	@RequestMapping("/save")
 	@ResponseBody
 	private void postlike(@RequestParam Long bno) {
-		
+		System.out.println("asdsa");
 		PostlikeDto postlikeDto = postlikeService.PostlikeDtoSet(bno);
-		
+		System.out.println(postlikeDto);
 		postlikeService.likeSaveOrDelete(postlikeDto);
 		
 	}

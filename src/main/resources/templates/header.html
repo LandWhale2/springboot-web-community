@@ -10,7 +10,7 @@
         <a sec:authorize="isAnonymous()" th:href="@{/user/login}" class="SignIn">
             SignIn
         </a>
-        <a sec:authorize="isAnonymous()" th:href="@{/signup}" class="SignUp">
+        <a sec:authorize="isAnonymous()" th:href="@{/user/signup}" class="SignUp">
             SignUp
         </a>
         <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}" class="signIn">
