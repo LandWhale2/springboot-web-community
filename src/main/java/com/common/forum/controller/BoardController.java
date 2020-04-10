@@ -96,7 +96,7 @@ public class BoardController {
     public String update(PostDto boardDTO) {
         postService.updatePost(boardDTO);
 
-        return "redirect:/";
+        return "";
     }
 	
 	

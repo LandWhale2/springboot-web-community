@@ -7,7 +7,49 @@
 <body>
 	<div th:insert="header.html" id="header"></div>
 	
-	
+	<dl th:each="category : ${categoryList}">
+    	
+    	<table>
+    		<span th:text="${category.name}"></span>
+        	<thead>
+        	<tr>
+            	<th class="one wide">번호</th>
+            	<th class="ten wide">글제목</th>
+            	<th class="two wide">작성자</th>
+            	<th class="three wide">작성일</th>
+            	<th class="four wide">조회수</th>
+            	<th class="four wide">댓글수</th>
+        	</tr>
+        	</thead>
+
+        <!-- <tbody>
+        CONTENTS !
+        <tr th:each="board : ${${category.id}}">
+            <td>
+                <span th:text="${board.id}"></span>
+            </td>
+            <td>
+                <a th:href="@{'/post/' + ${board.id}}">
+                    <span th:text="${board.title}"></span>
+                </a>
+            </td>
+            <td>
+                <span th:text="${board.writer}"></span>
+            </td>
+            <td>
+                <span th:text="${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
+            </td>
+            <td>
+                <span th:text="${board.hit}"></span>
+            </td>
+            <td>
+                <span th:text="${board.commentcount}"></span>
+            </td>
+        </tr>
+        </tbody> -->
+    	</table>
+    	
+    </dl>
 	
 </body>
 </html>
