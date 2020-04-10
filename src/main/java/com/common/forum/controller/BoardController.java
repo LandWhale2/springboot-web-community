@@ -77,6 +77,7 @@ public class BoardController {
     	PostDto postDTO = postService.getPostDto(no);
     	postService.addhit(no);
     	
+    	
     	model.addAttribute("boardDto", postDTO);
     	return "contentview";
     }

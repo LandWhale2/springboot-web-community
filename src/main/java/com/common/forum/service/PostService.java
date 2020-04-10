@@ -36,6 +36,7 @@ public class PostService {
 		Optional<PostEntity> postEntityWrapper = postRepository.findById(id);
 		PostEntity postEntity = postEntityWrapper.get();
 		PostDto postDTO = this.convertEntityToDtowithoutCategoryEntity(postEntity);
+		postDTO.setCommentCount();
 		return postDTO;
 	}
 	
@@ -123,6 +124,7 @@ public class PostService {
 				.writer(postEntity.getWriter())
 				.createdDate(postEntity.getCreatedDate())
 				.hit(postEntity.getHit())
+				.comment(postEntity.getComment())
 				.build();
 	}
 	
