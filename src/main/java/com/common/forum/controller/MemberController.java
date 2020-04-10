@@ -95,7 +95,7 @@ public class MemberController {
     // 로그아웃 결과 페이지
     @GetMapping("/user/logout/result")
     public String dispLogout() {
-        return "member/logout";
+        return "redirect:/";
     }
 
     // 접근 거부 페이지
