@@ -23,13 +23,16 @@
         <span class="content-com" th:text="댓글+ '  |  ' + 2"></span></div>
         
     </div>
-    <div class="content-zone"><img th:src="@{/assets/google_logo.png}" style="width: 300px; height: 300px;">
+    <div class="content-zone">
+    <!-- <img th:src="@{/assets/google_logo.png}" style="width: 300px; height: 300px;"> -->
         <p th:text="${boardDto.content}"></p></div>
 
 	<span class="like-group-btn">
 		<button class="btn btn-default" type="button" name="likeBtn">추천</button>
 	</span>
+	
     <div class="container-social">
+        
         
         <table class="social">
             <tr>
@@ -37,9 +40,23 @@
                 <td th:text="댓글"></td>
             </tr>
         </table>
-        <div class="comment"><textarea placeholder="댓글을 입력해주세요" name="content" required class="recom-zone"></textarea>
-            <button type="submit" class="btn">등록</button>
-        </div>
+        
+        <div class="container">
+			<div class="commentList"></div>
+		</div>
+        
+        
+        <form name="commentInsertFrom">
+			<div class="comment">
+				<input type="hidden" name="bno" value=${boardDto.id}/>
+				<textarea id="content" placeholder="내용을 입력하세요." required class="recom-zone"></textarea>
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button" name="commentInsertBtn">등록</button>
+				</span>
+			
+			</div>
+		</form>
+        
     </div>
     <form class="control" method="post">
         <button class="btn">수정</button>
@@ -72,7 +89,7 @@ function commentList(){
           var a =''; 
           $.each(data, function(key, value){ 
               a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-              a += '<div class="commentInfo'+value.id+'">'+'댓글번호 : '+value.id+' / 작성자 : '+value.writer;
+              a += '<div class="commentInfo'+value.id+'">'+' 작성자 : '+value.writer;
               a += '<a onclick="commentUpdate('+value.id+',\''+value.content+'\');"><p>수정</p> </a>';
               a += '<a onclick="commentDelete('+value.id+');"> 삭제 </a> </div>';
               a += '<div class="commentContent'+value.id+'"> <p> 내용 : '+value.content +'</p>';
