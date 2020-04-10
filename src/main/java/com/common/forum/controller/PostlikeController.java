@@ -23,7 +23,9 @@ public class PostlikeController {
 	@RequestMapping("/save")
 	@ResponseBody
 	private void postlike(@RequestParam Long bno) {
+		
 		PostlikeDto postlikeDto = postlikeService.PostlikeDtoSet(bno);
+		
 		postlikeService.likeSaveOrDelete(postlikeDto);
 		
 	}
@@ -31,6 +33,8 @@ public class PostlikeController {
 	@RequestMapping("/count/{bno}")
 	@ResponseBody
 	private Long getcount(@PathVariable Long bno) {
+		
+		
 		return postlikeService.getPostlikecount(bno);
 	}
 	
