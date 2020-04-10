@@ -15,22 +15,26 @@
     </div>
 </header>
 <body>
-<form th:action="@{/user/signup}" class="container" method="post">
+<form th:action="@{/user/signup}" class="container" method="post" modelAttribute="memberDto">
     <div class="form">
-        <label for="email"><b>E-mail</b></label>
-        <input type="text" placeholder="E-mail 을 입력해주세요오오" name="email">
-        <span th:text="valid_email"></span>
-        <label for="psw"><b>비밀번호</b></label>
-        <input type="password" placeholder="비밀번호를 입력해주세요" name="password">
-        <span th:text="valid_password"></span>
-        <label for="psw-repeat"><b>비밀번호 확인</b></label>
-        <input type="password" placeholder="비밀번호를 다시 입력해주세요" name="password2">
-        <span th:text="valid_password_repeat"></span>
-        <label for="nickname"><b>닉네임</b></label>
-        <input type="text" placeholder="닉네임을 입력해주세요" name="nickname">
-        <span th:text="valid_nickname"></span>
-        <label><input type="checkbox" checked="checked" name="remember"> 개인정보 및 약관 동의</label>
+        <input type="hidden" name="emailcheck" value=false>
+        <div>
+            <input type="text" name="email" th:value="${memberDto.email}" placeholder="이메일을 입력해주세요.">
+            <input type="button" id="emailBtn" value="이메일 중복 확인" >
+            <span th:text="${valid_email}"></span>
+            <span th:text="${valid_emailcheck}"></span>
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="비밀번호">
+            <span th:text="${valid_password}"></span>
+        </div>
+        <div>
+            <input type="text" name="nickname" th:value="${memberDto.nickname}" placeholder="닉네임을 입력해주세요.">
+        </div>
+        <label><input type="checkbox" checked="checked" name="terms"> 개인정보 및 약관 동의</label>
         <p>By creating an account you agree to our <a href="#agree" style="color: dodgerblue"> Terms & Privacy</a></p>
+        <span th:text="${valid_terms}"></span>
+        <button type="submit">가입하기</button>
         <div class="clearfix">
             <button type="button" class="cancelbtn">Cancel</button>
             <button type="submit" class="signupbtn">Sign Up</button>
