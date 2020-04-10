@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.common.forum.domain.entity.CategoryEntity;
 import com.common.forum.domain.entity.CommentEntity;
+import com.common.forum.domain.entity.MemberEntity;
 import com.common.forum.domain.entity.PostEntity;
 
 
@@ -27,6 +28,7 @@ public class PostDto {
 	private String category;
 	private int hit;
 	private int commentcount;
+	private MemberEntity memberEntity;
 	
 	
 	
@@ -51,6 +53,7 @@ public class PostDto {
                 .categoryEntity(categoryEntity)
                 .comment(comment)
                 .hit(hit)
+                .memberEntity(memberEntity)
                 .build();
         return build;
     }
@@ -61,7 +64,7 @@ public class PostDto {
 	//이렇게되면 런타임시에 오류를 많이 보게되고 , 빌더패턴은 이를줄여준다.
 	
 	@Builder
-    public PostDto(Long id, String title, String content, String writer, LocalDateTime createdDate, LocalDateTime modifiedDate, int hit, CategoryEntity categoryEntity, List<CommentEntity> comment) {
+    public PostDto(Long id, String title, String content, String writer, LocalDateTime createdDate, LocalDateTime modifiedDate, int hit, CategoryEntity categoryEntity, List<CommentEntity> comment, MemberEntity memberEntity) {
         this.id = id;
         this.writer = writer;
         this.title = title;
@@ -71,7 +74,7 @@ public class PostDto {
         this.hit = hit;
         this.categoryEntity = categoryEntity;
         this.comment = comment;
-        
+        this.memberEntity = memberEntity;
     }
 	
 

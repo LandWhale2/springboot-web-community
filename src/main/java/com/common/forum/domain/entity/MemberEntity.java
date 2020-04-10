@@ -37,13 +37,18 @@ public class MemberEntity {
     private String authkey;
     
     
+    @OneToMany(mappedBy="memberEntity", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PostEntity> post = new ArrayList<>();
+    
+    
     @Builder
-    public MemberEntity(Long id, String email, String password, String nickname, boolean isactive, String authkey) {
+    public MemberEntity(Long id, String email, String password, String nickname, boolean isactive, String authkey, List<PostEntity> post) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.nickname = nickname;
         this.isactive = isactive;
         this.authkey = authkey;
+        this.post = post;
     }
 }

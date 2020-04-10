@@ -65,6 +65,12 @@ public class PostEntity extends TimeEntity{
     private List<PostlikeEntity> postlike = new ArrayList<>();
     
     
+    @ManyToOne
+    @JoinColumn(name="member_id")
+    private MemberEntity memberEntity;
+    
+    
+    
     
     @Column(columnDefinition = "integer default 0")
     private int hit;
@@ -72,7 +78,12 @@ public class PostEntity extends TimeEntity{
     
     
     
-    
+    public void setMemberAndPost(MemberEntity memberEntity) {
+    	
+    	this.memberEntity = memberEntity;
+    	
+    	memberEntity.getPost().add(this);
+    }
     
     
     
@@ -94,7 +105,7 @@ public class PostEntity extends TimeEntity{
 	//Builder 패턴 클래시를 생성해주는 annotation, @Setter 사용대신 빌더패턴을 사용해야  안정성을 보장가능
 	
     @Builder
-    public PostEntity(Long id, String title, String writer, String content, CategoryEntity categoryEntity,  List<CommentEntity> comment,int hit) {
+    public PostEntity(Long id, String title, String writer, String content, CategoryEntity categoryEntity,  List<CommentEntity> comment,int hit, MemberEntity memberEntity) {
         this.id = id;
         this.writer = writer;
         this.title = title;
@@ -103,7 +114,7 @@ public class PostEntity extends TimeEntity{
         this.comment = comment;
 //        this.setPostEntityAndCategoryEntity(categoryEntity);
         this.hit = hit;
-        
+        this.memberEntity = memberEntity;
     }
 
 }

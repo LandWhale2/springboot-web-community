@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.common.forum.domain.entity.CategoryEntity;
+import com.common.forum.domain.entity.MemberEntity;
 import com.common.forum.domain.entity.PostEntity;
 import com.common.forum.domain.repository.CategoryRepository;
 import com.common.forum.domain.repository.PostRepository;
@@ -28,6 +29,7 @@ public class PostService {
 	private PostRepository postRepository;
 	private CategoryRepository categoryRepository;
 	private CategoryService categoryService;
+	private MemberService memberService;
 	
 	
 	//get dto, entity
@@ -35,6 +37,7 @@ public class PostService {
 	public PostDto getPostDto(Long id) {
 		Optional<PostEntity> postEntityWrapper = postRepository.findById(id);
 		PostEntity postEntity = postEntityWrapper.get();
+		
 		PostDto postDTO = this.convertEntityToDtowithoutCategoryEntity(postEntity);
 		postDTO.setCommentCount();
 		return postDTO;
@@ -70,9 +73,10 @@ public class PostService {
 		Long postid = postRepository.save(postDto.toEntity()).getId();
 		
 		PostEntity postEntity = this.getPostEntity(postid);
+		MemberEntity memberEntity = memberService.getMemberEntity();
 		
 		postEntity.setPostEntityAndCategoryEntity(categoryEntity);
-		
+		postEntity.setMemberAndPost(memberEntity);
 		
 //		categoryEntity.addPost(postentity);
 		
@@ -93,7 +97,10 @@ public class PostService {
 	
 	@Transactional
     public void deletePost(Long id) {
-        postRepository.deleteById(id);
+		if (this.postauth(id)) {
+			postRepository.deleteById(id);
+		}
+		
     }
 	
 	
@@ -112,6 +119,7 @@ public class PostService {
 				.hit(postEntity.getHit())
 				.categoryEntity(postEntity.getCategoryEntity())
 				.comment(postEntity.getComment())
+				.memberEntity(postEntity.getMemberEntity())
 				.build();
 	}
 	
@@ -192,7 +200,7 @@ public class PostService {
 		
 		// 총 게시글 수
 		Double postsTotalCount = Double.valueOf(this.getPostCount(category));
-		System.out.println(postsTotalCount);
+		
 		// 총 게시글 기준으로 계산한 마지막 페이지 번호 계산
 		Integer totalLastPageNum = (int)(Math.ceil((postsTotalCount/PAGE_POST_COUNT)));
 		
@@ -255,10 +263,21 @@ public class PostService {
 		
 		postDto.setHit(posthit);
 		postDto.setCategoryEntity(postDto.getCategoryEntity());
-		
+		postDto.setMemberEntity(postDto.getMemberEntity());
 		postRepository.save(postDto.toEntity());
 		
 	}
 	
+	
+	private boolean postauth(Long id) {
+		String postEmail = this.getPostEntity(id).getMemberEntity().getEmail();
+		String userEmail = memberService.getMemberEntity().getEmail();
+		
+		if(postEmail == userEmail) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 
 }
