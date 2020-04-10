@@ -115,8 +115,10 @@ public class PostService {
 				.build();
 	}
 	
+	
+	
 	@Transactional
-	private PostDto convertEntityToDtowithoutCategoryEntity(PostEntity postEntity) {
+	public PostDto convertEntityToDtowithoutCategoryEntity(PostEntity postEntity) {
 		return PostDto.builder()
 				.id(postEntity.getId())
 				.title(postEntity.getTitle())
