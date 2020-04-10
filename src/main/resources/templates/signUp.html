@@ -7,6 +7,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+	<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 </head>
 <header>
     <div class="top-bar">
@@ -42,6 +44,40 @@
 
     </div>
 </form>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    	var token = $("meta[name='_csrf']").attr("content");
+    	var header = $("meta[name='_csrf_header']").attr("content");
+    	$("#emailBtn").click(function(){
+    		var email = $("input[name=email]").val();
+    		emailCheck(email);
+    	});
+    	
+    	
+    	function emailCheck(email){
+    		$.ajax({
+    	          url : '/checkemail/'+ email,
+    	          type : 'get',
+    	          data : {
+    	        	  'email': email
+    	          },
+    	          beforeSend : function(xhr){
+    	        	  xhr.setRequestHeader(header, token);
+    	          },
+    	          success : function(data){
+    	        	  alert("이미 가입된 이메일 입니다.");
+    	        	  $("input[name=emailcheck]").val(false);
+    	        	  
+    	          },
+    	          error: function(error) {
+    	        	  alert("사용 가능한 이메일 입니다.");
+    	        	  $("input[name=emailcheck]").val(true);
+
+    	          }
+    	      });
+    	}
+    </script>
 
 </body>
 </html>

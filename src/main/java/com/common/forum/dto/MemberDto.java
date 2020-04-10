@@ -40,6 +40,8 @@ public class MemberDto {
 	@AssertTrue(message = "이메일 중복 체크를 해주십시오.")
 	private boolean emailcheck;
 	
+	
+	
 	private String authkey;
     private boolean isactive;
     
