@@ -25,15 +25,7 @@ public class BoardController {
 	private CategoryService categoryService;
 	
 	
-	@GetMapping("/")
-    public String test(Model model) {
-		List<CategoryDto> categoryList = categoryService.getCategoryList();
-		
-		
-		
-		model.addAttribute("categoryList", categoryList);
-        return "home";
-    }
+	
 	
 	
 	
