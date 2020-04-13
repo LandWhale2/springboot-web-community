@@ -28,7 +28,11 @@
     
     <div class="tab">
    		 <a th:href="@{/}">
-        	<li th:text="Home"></li>
+        	Home
+        </a>
+        <br>
+        <a th:href="@{/recommand}">
+        	Recommand
         </a>
         <ul th:each="category : ${categoryList}">
             <a th:href="@{'/' + ${category.name}}">

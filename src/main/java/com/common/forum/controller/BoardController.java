@@ -120,7 +120,7 @@ public class BoardController {
     public String search(@RequestParam(value="keyword") String keyword, Model model) {
 		List<CategoryDto> categoryList = categoryService.getCategoryList();
     	List<PostDto> postDtoList = postService.searchPosts(keyword);
-    	System.out.println(postDtoList);
+    	
     	
     	model.addAttribute("categoryList", categoryList);
     	model.addAttribute("boardList", postDtoList);
@@ -129,4 +129,14 @@ public class BoardController {
     }
 	
 	
+	
+	@GetMapping("/recommand")
+	public String recommand(Model model) {
+		List<CategoryDto> categoryList = categoryService.getCategoryList();
+		List<PostDto> postDtoList = postService.getReCommandPost();
+		
+		model.addAttribute("categoryList", categoryList);
+		model.addAttribute("boardList", postDtoList);
+		return "search";
+	}
 }
