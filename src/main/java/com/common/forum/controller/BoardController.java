@@ -61,12 +61,6 @@ public class BoardController {
     
 	@PostMapping("/writing")
 	public String write(PostDto postDto) {
-		
-		//로그인중인 닉네임
-		String writer = MemberService.currentUserNickname();
-		postDto.setWriter(writer);
-  	
-  	
 		postService.savePost(postDto);
       
 
