@@ -101,6 +101,11 @@ public class PostEntity extends TimeEntity{
     }
     
     
+    public void addHit() {
+    	this.hit += 1;
+    }
+    
+    
     
 	//Builder 패턴 클래시를 생성해주는 annotation, @Setter 사용대신 빌더패턴을 사용해야  안정성을 보장가능
 	

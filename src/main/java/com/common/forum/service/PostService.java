@@ -154,7 +154,7 @@ public class PostService {
 	private static final int BLOCK_PAGE_NUM_COUNT = 10;// 블럭에 존재하는 페잊지수
 	private static final int PAGE_POST_COUNT = 10;// 한페이지에 존재하는 게시글 수
 	
-	
+	//게시물 갯수를 카테고리별로 알려주는 코드
 	@Transactional
 	public Long getPostCount(String category) {
 		CategoryEntity categoryentity = categoryService.getCategoryEntity(category);
@@ -225,15 +225,7 @@ public class PostService {
 	@Transactional
 	public void addhit(Long id) {
 		PostEntity postEntity = this.getPostEntity(id);
-		PostDto postDto = this.convertEntityToDto(postEntity);
-		int posthit = postDto.getHit() + 1;
-		
-		
-		postDto.setHit(posthit);
-		postDto.setCategoryEntity(postDto.getCategoryEntity());
-		postDto.setMemberEntity(postDto.getMemberEntity());
-		postRepository.save(postDto.toEntity());
-		
+		postEntity.addHit();		
 	}
 	
 	
