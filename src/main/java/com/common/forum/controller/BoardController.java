@@ -127,7 +127,7 @@ public class BoardController {
 	@GetMapping("/recommand")
 	public String recommand(Model model) {
 		List<CategoryDto> categoryList = categoryService.getCategoryList();
-		List<PostDto> postDtoList = postService.getReCommandPost();
+		List<PostDto> postDtoList = postService.getReCommandPost(1);
 		
 		model.addAttribute("categoryList", categoryList);
 		model.addAttribute("boardList", postDtoList);

@@ -242,8 +242,7 @@ public class PostService {
 	
 	
 	@Transactional
-	public List<PostDto> getReCommandPost() {
-		int len = 1;
+	public List<PostDto> getReCommandPost(int len) {
 		List<PostEntity> postEntities = postRepository.findAll();
 		List<PostDto> postDtoList = new ArrayList<>();
 		for (PostEntity postEntity : postEntities) {
