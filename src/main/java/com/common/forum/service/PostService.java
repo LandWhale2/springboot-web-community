@@ -155,36 +155,8 @@ public class PostService {
 	private static final int PAGE_POST_COUNT = 10;// 한페이지에 존재하는 게시글 수
 	
 	
-	
-	//기존 사용 전체 게시물 페이징
-	
-	@Transactional
-	public List<PostDto> getPostList(Integer pageNum) {
-		//첫번째 인자 limit 를 의미함 , 현재 페이지 번호 -1 를 계산한값, 실제페이지 번호랑 Sql조회시 limit랑달라서
-		//두번째 인자 Offset를 의미, 몇개를 가져올것인가
-		//세번째 인자 정렬방식을 결정함. 
-		Page<PostEntity> page = postRepository.findAll(PageRequest.of(pageNum -1, PAGE_POST_COUNT, Sort.by(Sort.Direction.ASC, "createdDate")));
-		
-		List<PostEntity> postEntities = page.getContent();
-		List<PostDto> postDtoList = new ArrayList<>();
-		
-		for (PostEntity postEntity : postEntities) {
-			PostDto postDto = this.convertEntityToDto(postEntity);
-			postDto.setCommentCount();
-			postDtoList.add(postDto);
-		}
-		
-		return postDtoList;
-	}
-	
-	
-	
-	
 	@Transactional
 	public Long getPostCount(String category) {
-		if (category == null)
-			return postRepository.count();
-		
 		CategoryEntity categoryentity = categoryService.getCategoryEntity(category);
 		return (long) postRepository.findAllByCategoryEntity(categoryentity).size();
 	}
