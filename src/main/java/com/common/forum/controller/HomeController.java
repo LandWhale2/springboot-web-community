@@ -10,6 +10,7 @@ import com.common.forum.dto.CategoryDto;
 import com.common.forum.dto.PostDto;
 import com.common.forum.service.CategoryService;
 import com.common.forum.service.HomeService;
+import com.common.forum.service.PostService;
 
 import lombok.AllArgsConstructor;
 
@@ -19,6 +20,7 @@ public class HomeController {
 	
 	private CategoryService categoryService;
 	private HomeService homeService;
+	private PostService postService;
 	
 	@GetMapping("/")
     public String home(Model model) {
@@ -30,6 +32,7 @@ public class HomeController {
 			
 			model.addAttribute(categoryPostName, postDto);
 		}
+		postService.getReCommandPost();
 		
 		
 		model.addAttribute("categoryList", categoryList);

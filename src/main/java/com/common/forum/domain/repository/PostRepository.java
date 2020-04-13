@@ -24,4 +24,9 @@ public interface PostRepository extends JpaRepository<PostEntity, Long>{
 	List<PostEntity> findAllByCategoryEntity(CategoryEntity categoryentity);
 
 	List<PostEntity> findTop10ByCategoryEntity(CategoryEntity categoryEntity);
+
+	
+
+	
+	
 }

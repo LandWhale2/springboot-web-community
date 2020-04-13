@@ -289,5 +289,22 @@ public class PostService {
 			return false;
 		}
 	}
+	
+	
+	@Transactional
+	public List<PostDto> getReCommandPost() {
+		int len = 1;
+		List<PostEntity> postEntities = postRepository.findAll();
+		List<PostDto> postDtoList = new ArrayList<>();
+		for (PostEntity postEntity : postEntities) {
+			if (postEntity.getPostlike().size() >= len) {
+				PostDto postDto = this.convertEntityToDto(postEntity);
+				postDto.setCommentCount();
+				postDtoList.add(postDto);
+			}
+		}
+		
+		return postDtoList;
+	}
 
 }
