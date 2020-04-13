@@ -154,7 +154,10 @@ public class PostService {
 		if (postEntities.isEmpty()) return postDtoList;
 		
 		for (PostEntity postEntity: postEntities) {
-			postDtoList.add(this.convertEntityToDto(postEntity));
+			PostDto postDto = this.convertEntityToDto(postEntity);
+			postDto.setCommentCount();
+			postDto.setCategory(postDto.getCategoryEntity().getName());
+			postDtoList.add(postDto);
 		}
 		
 		return postDtoList;

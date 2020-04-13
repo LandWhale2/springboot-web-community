@@ -39,6 +39,8 @@ public class BoardController {
 		List<CategoryDto> categoryList = categoryService.getCategoryList();
 		CategoryDto categoryDto = categoryService.getcategoryDto(category);
 		
+		
+		
 		model.addAttribute("category", categoryDto);
 		model.addAttribute("categoryList", categoryList);
 		model.addAttribute("boardList", postList);
@@ -59,7 +61,7 @@ public class BoardController {
     
 	@PostMapping("/writing")
 	public String write(PostDto postDto) {
-		System.out.println(postDto);
+		
 		//로그인중인 닉네임
 		String writer = MemberService.currentUserNickname();
 		postDto.setWriter(writer);
@@ -116,11 +118,14 @@ public class BoardController {
 	//게시물 검색
 	@GetMapping("/board/search")
     public String search(@RequestParam(value="keyword") String keyword, Model model) {
+		List<CategoryDto> categoryList = categoryService.getCategoryList();
     	List<PostDto> postDtoList = postService.searchPosts(keyword);
+    	System.out.println(postDtoList);
     	
+    	model.addAttribute("categoryList", categoryList);
     	model.addAttribute("boardList", postDtoList);
     	
-    	return "main";
+    	return "search";
     }
 	
 	
