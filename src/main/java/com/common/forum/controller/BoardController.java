@@ -120,7 +120,7 @@ public class BoardController {
     	
     	model.addAttribute("boardList", postDtoList);
     	
-    	return "board/list.html";
+    	return "main";
     }
 	
 	
