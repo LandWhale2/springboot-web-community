@@ -35,16 +35,6 @@
             <a th:href="@{/recommand}">
                 <li> Recommand</li>
             </a>
-            <a th:href="@{/recommand}">
-                <li> Recommand</li>
-            </a>
-            <a th:href="@{/recommand}">
-                <li> Recommand</li>
-            </a>
-            <a th:href="@{/recommand}">
-                <li> Recommand</li>
-            </a>
-
         </ul>
         <ul th:each="category : ${categoryList}">
             <a th:href="@{'/' + ${category.name}}">
