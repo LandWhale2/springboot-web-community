@@ -57,8 +57,8 @@ body {
 }
 
 .container {
-    margin: auto;
-    width: 60%;
+    margin: 150px auto;
+    width: 50%;
     height: auto;
     padding: 40px;
     box-shadow: 10px 10px 10px gray;
@@ -121,9 +121,14 @@ input[type=text]:focus, input[type=password]:focus {
     display: table;
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 900px) {
     .clearfix .cancelbtn, .clearfix .signupbtn {
         width: 100%;
+    }
+
+    .container {
+        width: 100%;
+        margin: 20px 0;
     }
 
 }

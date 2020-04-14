@@ -1,22 +1,25 @@
+<head>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
 <div class="top-bar">
-    <a href="#HomePage" class="logo">커뮤니티</a>
+    <a href="/" class="logo">커뮤니티</a>
     <div class="search-container">
         <form action="/board/search" method="GET">
             <button type="submit"><i class="fa fa-search"></i></button>
-            <input type="text" placeholder="검색어를 입력해주세요" name="keyword"></form>
+            <input type="text" placeholder="검색어를 입력해주세요" name="keyword">
+        </form>
     </div>
     <div class="top-bar-right"><a href="#Alarm" class="Alarm"><i class="far fa-bell"></i></a>
-
-        <a sec:authorize="isAnonymous()" th:href="@{/user/login}" class="SignIn">
+        <a sec:authorize="isAnonymous()" th:href="@{/user/login}" class="btn signIn">
             SignIn
         </a>
-        <a sec:authorize="isAnonymous()" th:href="@{/signup}" class="SignUp">
+        <a sec:authorize="isAnonymous()" th:href="@{/user/signup}" class="btn signUp">
             SignUp
         </a>
-        <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}" class="signIn">
+        <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}" class="btn signIn">
             로그아웃
         </a>
-        <a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/user/info}" class="signIn">
+        <a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/user/info}" class="btn signUp">
             내정보
         </a>
         <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}" class="signIn">
@@ -24,4 +27,30 @@
         </a>
 
     </div>
+    <div class="tab">
+        <ul>
+            <a th:href="@{/}">
+                <li>Home</li>
+            </a>
+            <a th:href="@{/recommand}">
+                <li> Recommand</li>
+            </a>
+            <a th:href="@{/recommand}">
+                <li> Recommand</li>
+            </a>
+            <a th:href="@{/recommand}">
+                <li> Recommand</li>
+            </a>
+            <a th:href="@{/recommand}">
+                <li> Recommand</li>
+            </a>
+
+        </ul>
+        <ul th:each="category : ${categoryList}">
+            <a th:href="@{'/' + ${category.name}}">
+                <li th:text="${category.name}"></li>
+            </a>
+        </ul>
+    </div>
 </div>
+

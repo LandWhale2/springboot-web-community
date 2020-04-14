@@ -10,8 +10,6 @@
 </head>
 <div id="wrapper">
     <div th:insert="header.html" id="header"></div>
-    
-
     <table class="board">
         <thead>
         <tr>
@@ -48,7 +46,6 @@
         </tr>
         </tbody>
     </table>
-
     <div class="page-control">
         <div class="list-num">
             <span th:each="pageNum : ${pageList}" th:inline="text">

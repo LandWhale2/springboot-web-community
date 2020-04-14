@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper {
+    width: 100%;
+    font-size: 17px;
+}
+
+header {
+    margin: 1%;
+    text-align: center;
+    vertical-align: center;
+}
+
+.top-bar {
+    overflow: hidden;
+    background-color: white;
+    padding-top: 1%;
+    vertical-align: center;
+    text-align: center;
+    margin: 0 1%;
+}
+
+.top-bar a {
+    float: left;
+    display: block;
+    color: black;
+    text-decoration: none;
+}
+
+.top-bar .logo {
+    margin: 0 3% 0 1%;
+    font-size: 2.5rem;
+    font-weight: bolder;
+}
+
+.top-bar .search-container {
+    float: left;
+}
+
+.top-bar input[type="text"] {
+    font-size: 1.5rem;
+    padding: 10px 20px;
+}
+
+.top-bar .search-container button {
+    float: left;
+    background: #0e51ff;
+    padding: 12px 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    color: white;
+}
+
+.top-bar .search-container button:hover {
+    background: #ccc;
+}
+
+.top-bar-right {
+    float: right;
+}
+
+.top-bar-right .Alarm {
+    font-size: 2rem;
+    color: gray;
+    margin-top: 2%;
+}
+
+.btn {
+    color: #0e51ff;
+    padding: 10px 10px;
+    width: 110px;
+    height: 45px;
+    text-decoration: none;
+    font-size: 20px;
+    border: #0e51ff thin solid;
+    border-radius: 1rem;
+}
+
+.signIn {
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
+.signUp {
+    margin-right: 20px;
+}
+
+.tab {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tab a {
+    text-decoration: none;
+    color: black;
+    padding: 15px 0;
+    width: 20%;
+    border-bottom: thin solid gray;
+    text-align: center;
+}
+
+.tab ul {
+    list-style: none;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    text-align: center;
+}
+
+.tab ul li {
+    display: inline-block;
+    margin: 0;
+    height: 30px;
+    padding: 10px 0;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+.tab a:hover, .tab a.on {
+    border-bottom: 8px solid #0e51ff;
+}
+
+@media screen and (max-width: 900px) {
+    .tab a {
+        display: block;
+        width: 100%;
+    }
+}

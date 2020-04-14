@@ -1,13 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-	<div th:insert="header.html" id="header"></div>
-	
-	
-	
+<div th:insert="header.html" id="header"></div>
+<div class="container">
+    <div>
+        <h1>추천 게시판</h1>
+        <table class="table-1">
+            <tr th:each="board : ${boardList}">
+                <td th:text="${board.title}" class="table-1-title"></td>
+                <td th:text="${board.hit}" class="table-1-rec"></td>
+                <td th:text="${board.commentcount}" class="table-1-views"></td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+<script>
+    for (i = 1; i <= 4; i++) {
+
+    }
+</script>
 </body>
 </html>

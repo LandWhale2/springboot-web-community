@@ -4,6 +4,7 @@
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
+    box-sizing: border-box
 }
 
 #wrapper {
@@ -97,73 +98,6 @@ header {
     border-radius: 15px;
 }
 
-.tab {
-
-    text-align: center;
-}
-
-.tab .conBox {
-    width: auto;
-    height: auto;
-    overflow: hidden;
-    background: white;
-    display: none;
-    text-align: center;
-}
-
-.tab .conBox.on {
-    display: block;
-    border-radius: 1rem;
-}
-
-.tab a {
-    text-decoration: none;
-    color: black;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    left: 2%;
-
-}
-
-.tab ul {
-    list-style: none;
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-
-}
-
-.tab ul li {
-    display: inline-block;
-    margin: 0;
-    width: 19%;
-    height: 30px;
-    padding: 25px 0 5px 0;
-    text-align: center;
-    cursor: pointer;
-    border-bottom: thin solid gray;
-}
-
-.tab ul li:hover, .tab ul li.on {
-    border-bottom: 8px solid #0e51ff;
-}
-
-.tab .conBox {
-    width: auto;
-    height: auto;
-    overflow: hidden;
-    background: white;
-    display: none;
-    text-align: center;
-}
-
-.tab .conBox.on {
-    display: block;
-}
-
 .table-1 tr td {
     color: black;
 }
@@ -205,7 +139,7 @@ table.table-1 td {
 }
 
 .board {
-    margin: 20px 60px;
+    margin: 20px auto;
     padding: 10px 20px;
     width: 90%;
     height: auto;
@@ -298,4 +232,19 @@ table.table-1 td {
     padding: 10px 10px;
     border-radius: 10px;
     margin: 10px;
+}
+
+@media screen and (max-width: 900px) {
+    .tab ul li {
+        display: block;
+        width: 100%;
+    }
+
+    .board-num, .board-date, .board-comment, .board-hits {
+        display: none;
+    }
+
+    .board {
+        width: 100%;
+    }
 }
