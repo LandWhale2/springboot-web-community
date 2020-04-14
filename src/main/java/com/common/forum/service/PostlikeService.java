@@ -27,26 +27,27 @@ public class PostlikeService {
 	@Transactional
 	public PostlikeDto PostlikeDtoSet(Long bno) {
 		MemberEntity memberEntity = memberService.getMemberEntity();
-		System.out.println("asdsad");
 		PostEntity postEntity = postService.getPostEntity(bno);
-		PostlikeDto postlikeDto = new PostlikeDto();
-		postlikeDto.setMemberEntity(memberEntity);
-		postlikeDto.setPostEntity(postEntity);
+		PostlikeDto postlikeDto = PostlikeDto
+				.builder()
+				.memberEntity(memberEntity)
+				.postEntity(postEntity)
+				.build();
 		
 		return postlikeDto;
 	}
 	
 	
 	@Transactional
-	public void likeSaveOrDelete(PostlikeDto postlikeDto) {
+	public void likeSaveOrDelete(long bno) {
+		PostlikeDto postlikeDto = this.PostlikeDtoSet(bno);
+		
 		Optional<PostlikeEntity> postlikeEntityWrapper = 
 				postlikeRepository.findByPostEntityAndMemberEntity(postlikeDto.getPostEntity(), postlikeDto.getMemberEntity());
 		
 		if (postlikeEntityWrapper.isPresent()) {
-			System.out.println("좋아요 취소");
 			this.deletelike(postlikeDto);
 		}else {
-			System.out.println("좋아요");
 			this.savelike(postlikeDto);
 		}
 		
@@ -58,8 +59,6 @@ public class PostlikeService {
 	@Transactional
 	public Long savelike(PostlikeDto postlikeDto) {
 		PostlikeEntity postlikeEntity = postlikeDto.toEntity();
-		
-		
 		return postlikeRepository.save(postlikeEntity).getId();
 	}
 	

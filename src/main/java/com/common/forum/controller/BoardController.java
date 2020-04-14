@@ -61,12 +61,6 @@ public class BoardController {
     
 	@PostMapping("/writing")
 	public String write(PostDto postDto) {
-		
-		//로그인중인 닉네임
-		String writer = MemberService.currentUserNickname();
-		postDto.setWriter(writer);
-  	
-  	
 		postService.savePost(postDto);
       
 
@@ -133,7 +127,7 @@ public class BoardController {
 	@GetMapping("/recommand")
 	public String recommand(Model model) {
 		List<CategoryDto> categoryList = categoryService.getCategoryList();
-		List<PostDto> postDtoList = postService.getReCommandPost();
+		List<PostDto> postDtoList = postService.getReCommandPost(1);
 		
 		model.addAttribute("categoryList", categoryList);
 		model.addAttribute("boardList", postDtoList);

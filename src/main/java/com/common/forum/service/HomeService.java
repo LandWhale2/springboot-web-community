@@ -30,7 +30,7 @@ public class HomeService {
 		
 		
 		for (PostEntity postEntity : postEntities) {
-			PostDto postDto = postService.convertEntityToDtowithoutCategoryEntity(postEntity);
+			PostDto postDto = postService.convertEntityToDto(postEntity);
 			postDtoList.add(postDto);
 		}
 		

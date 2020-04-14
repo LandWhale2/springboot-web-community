@@ -32,8 +32,6 @@ public class HomeController {
 			
 			model.addAttribute(categoryPostName, postDto);
 		}
-		postService.getReCommandPost();
-		
 		
 		model.addAttribute("categoryList", categoryList);
         return "home";

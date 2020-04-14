@@ -27,7 +27,6 @@ import java.util.Optional;
 @Service
 public class PostService {
 	private PostRepository postRepository;
-	private CategoryRepository categoryRepository;
 	private CategoryService categoryService;
 	private MemberService memberService;
 	
@@ -38,7 +37,7 @@ public class PostService {
 		Optional<PostEntity> postEntityWrapper = postRepository.findById(id);
 		PostEntity postEntity = postEntityWrapper.get();
 		
-		PostDto postDTO = this.convertEntityToDtowithoutCategoryEntity(postEntity);
+		PostDto postDTO = this.convertEntityToDto(postEntity);
 		postDTO.setCommentCount();
 		return postDTO;
 	}
@@ -65,21 +64,20 @@ public class PostService {
 	//선언적 트랜젝션으로 불리며 , 트랜젝션을 적용하는 Annotation
 	@Transactional
     public void savePost(PostDto postDto) {
-		
+		MemberEntity memberEntity = memberService.getMemberEntity();
 		CategoryEntity categoryEntity = categoryService.getCategoryEntity(postDto.getCategory());
 		
+		
+		postDto.setWriter(memberEntity.getNickname());
 		postDto.setCategoryEntity(categoryEntity);
 		
-		Long postid = postRepository.save(postDto.toEntity()).getId();
+		PostEntity postEntity = postRepository.save(postDto.toEntity());
 		
-		PostEntity postEntity = this.getPostEntity(postid);
-		MemberEntity memberEntity = memberService.getMemberEntity();
+		
+		
 		
 		postEntity.setPostEntityAndCategoryEntity(categoryEntity);
 		postEntity.setMemberAndPost(memberEntity);
-		
-//		categoryEntity.addPost(postentity);
-		
         
     }
 	
@@ -88,10 +86,10 @@ public class PostService {
 		if (this.postauth(postDto.getId())) {
 			PostEntity postEntity = this.getPostEntity(postDto.getId());
 			PostDto postDTO = this.convertEntityToDto(postEntity);
-			postDTO.setTitle(postDTO.getTitle());
-			postDTO.setContent(postDTO.getContent());
-			postDto.setCategoryEntity(postDTO.getCategoryEntity());
-			postDto.setMemberEntity(postDTO.getMemberEntity());
+			postDTO.setTitle(postDto.getTitle());
+			postDTO.setContent(postDto.getContent());
+			postDTO.setCategoryEntity(postDTO.getCategoryEntity());
+			postDTO.setMemberEntity(postDTO.getMemberEntity());
 			
 			
 			postRepository.save(postDTO.toEntity());
@@ -132,18 +130,6 @@ public class PostService {
 	
 	
 	
-	@Transactional
-	public PostDto convertEntityToDtowithoutCategoryEntity(PostEntity postEntity) {
-		return PostDto.builder()
-				.id(postEntity.getId())
-				.title(postEntity.getTitle())
-				.content(postEntity.getContent())
-				.writer(postEntity.getWriter())
-				.createdDate(postEntity.getCreatedDate())
-				.hit(postEntity.getHit())
-				.comment(postEntity.getComment())
-				.build();
-	}
 	
 	
 	@Transactional
@@ -166,39 +152,11 @@ public class PostService {
 	//페이징
 	
 	private static final int BLOCK_PAGE_NUM_COUNT = 10;// 블럭에 존재하는 페잊지수
-	private static final int PAGE_POST_COUNT = 4;// 한페이지에 존재하는 게시글 수
+	private static final int PAGE_POST_COUNT = 10;// 한페이지에 존재하는 게시글 수
 	
-	
-	
-	//기존 사용 전체 게시물 페이징
-	
-	@Transactional
-	public List<PostDto> getPostList(Integer pageNum) {
-		//첫번째 인자 limit 를 의미함 , 현재 페이지 번호 -1 를 계산한값, 실제페이지 번호랑 Sql조회시 limit랑달라서
-		//두번째 인자 Offset를 의미, 몇개를 가져올것인가
-		//세번째 인자 정렬방식을 결정함. 
-		Page<PostEntity> page = postRepository.findAll(PageRequest.of(pageNum -1, PAGE_POST_COUNT, Sort.by(Sort.Direction.ASC, "createdDate")));
-		
-		List<PostEntity> postEntities = page.getContent();
-		List<PostDto> postDtoList = new ArrayList<>();
-		
-		for (PostEntity postEntity : postEntities) {
-			PostDto postDto = this.convertEntityToDto(postEntity);
-			postDto.setCommentCount();
-			postDtoList.add(postDto);
-		}
-		
-		return postDtoList;
-	}
-	
-	
-	
-	
+	//게시물 갯수를 카테고리별로 알려주는 코드
 	@Transactional
 	public Long getPostCount(String category) {
-		if (category == null)
-			return postRepository.count();
-		
 		CategoryEntity categoryentity = categoryService.getCategoryEntity(category);
 		return (long) postRepository.findAllByCategoryEntity(categoryentity).size();
 	}
@@ -267,15 +225,7 @@ public class PostService {
 	@Transactional
 	public void addhit(Long id) {
 		PostEntity postEntity = this.getPostEntity(id);
-		PostDto postDto = this.convertEntityToDto(postEntity);
-		int posthit = postDto.getHit() + 1;
-		
-		
-		postDto.setHit(posthit);
-		postDto.setCategoryEntity(postDto.getCategoryEntity());
-		postDto.setMemberEntity(postDto.getMemberEntity());
-		postRepository.save(postDto.toEntity());
-		
+		postEntity.addHit();		
 	}
 	
 	
@@ -292,8 +242,7 @@ public class PostService {
 	
 	
 	@Transactional
-	public List<PostDto> getReCommandPost() {
-		int len = 1;
+	public List<PostDto> getReCommandPost(int len) {
 		List<PostEntity> postEntities = postRepository.findAll();
 		List<PostDto> postDtoList = new ArrayList<>();
 		for (PostEntity postEntity : postEntities) {
